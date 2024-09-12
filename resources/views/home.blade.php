@@ -201,7 +201,7 @@ h4{
     <div class="container-event">
         <!-- Box Event 1 -->
         <div class="box-event">
-            <img src="img/slide1.png" alt="Event 1">
+            <img src="img/s-1.png" loading="lazy" alt="Event 1">
             
                 <h4>Buka Bersama</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>

@@ -158,10 +158,10 @@
             <img src="{{ asset('img/logo.png') }}?v={{ time() }}" alt="Logo">
             <p>Dengan semangat kebersamaan dan nilai-nilai Islam, kami berkomitmen membentuk generasi yang berilmu, berakhlak mulia, dan mampu memberikan manfaat nyata bagi masyarakat.</p>
             <ul class="social-icons">
-                <li><a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
-                <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li>
-                <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                <li><a href="https://wa.me/6282134749670" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                {{-- <li><a href="#" target="_blank"><i class="fab fa-youtube"></i></a></li> --}}
+                <li><a href="https://www.instagram.com/pripnuippnu.pujut01/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                {{-- <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li> --}}
                 <li><a href="mailto:your-email@example.com" target="_blank"><i class="fas fa-envelope"></i></a></li>
             </ul>
         </div>
