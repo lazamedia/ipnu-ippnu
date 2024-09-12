@@ -29,28 +29,28 @@ h4{
         <div class="box-hero hero-kanan">
             <div class="slider">
                 <div class="slide active">
-                    <img src="img/slide1.png" alt="Slide 1">
+                    <img src="img/s-1.jpg" alt="Slide 1">
                     <div class="content">
                         <h4>PR IPNU & IPPNU Pujut 01</h4>
                         <p>Berjuang demi kejayaan NU</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/slide2.png" alt="Slide 2">
+                    <img src="img/s-2.jpg" alt="Slide 2">
                     <div class="content">
                         <h4>Buka Bersama</h4>
                         <p>Kegiatan rutin ramadhan</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/slide3.png" alt="Slide 3">
+                    <img src="img/s-3.jpg" alt="Slide 3">
                     <div class="content">
                         <h4>ZARKASI</h4>
                         <p>Ziarah dan Rekreasi IPNU - IPPNU</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/slide4.png" alt="Slide 4">
+                    <img src="img/s-4.jpg" alt="Slide 4">
                     <div class="content">
                         <h4>MAKESTA</h4>
                         <p>Masa Kesetiaan Anggota</p>
@@ -91,7 +91,7 @@ h4{
 {{-- VISI MISI --}}
 <section class="visi-misi">
     <div class="vmbox vmboxkiri">
-        <img src="img/visimisi.png" alt="Visi Misi Image" style="width: 300px; height: auto">
+        <img src="img/vs.jpg" alt="Visi Misi Image" style="width: 300px; height: auto">
     </div>
     <div class="vmbox vmboxkanan">
         <h3 class="vm-title">Visi</h3>
