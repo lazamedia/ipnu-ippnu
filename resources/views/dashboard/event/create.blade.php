@@ -23,7 +23,7 @@
         transform: translateY(-50%);
         background-color: #46d3c0;
         color: white;
-        border: none;
+        border: none; 
         padding: 5px 10px;
         cursor: pointer;
         font-size: 16px;
