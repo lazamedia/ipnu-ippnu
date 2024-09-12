@@ -87,12 +87,11 @@
                                 <tr>
                                     <th><input type="checkbox" id="select-all"></th>
                                     <th>No</th>
-                                    <th>Ketua</th>
+                                    <th>Nama Acara</th>
                                     <th>Tempat</th>
                                     <th>Tanggal</th>
                                     <th>Anggaran</th>
-                                    <th>Divisi Humas</th>
-                                    <th>Tamu Undangan</th>
+                                    
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -101,26 +100,14 @@
                                 <tr>
                                     <td><input type="checkbox" class="checkbox-event" value="{{ $event->id }}"></td>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $event->ketua_pelaksana }}</td>
+                                    <td>{{ $event->nama_event }}</td>
                                     <td>{{ $event->tempat }}</td>
-                                    <td>{{ \Carbon\Carbon::parse($event->tanggal)->format('d-m-Y H:i') }}</td>
+                                    <td>{{ $event->tanggal }}</td>
                                     <td>{{ $event->anggaran }}</td>
-                                    <td>
-                                        <ul>
-                                            @foreach(explode(',', $event->divisi_humas) as $divisi)
-                                                <li> {{ trim($divisi) }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
-                                    <td>
-                                        <ul>
-                                            @foreach(explode(',', $event->tamu_undangan) as $tamu)
-                                                <li> {{ trim($tamu) }}</li>
-                                            @endforeach
-                                        </ul>
-                                    </td>
+                                    
                                     
                                     <td>
+                                        <a href="" class="btn btn-primary btn-sm">Detail</a>
                                         <a href="{{ route('event.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('event.destroy', $event->id) }}" method="POST" class="delete-form d-inline">
                                             @csrf

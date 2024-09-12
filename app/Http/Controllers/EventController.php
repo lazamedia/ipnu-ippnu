@@ -32,53 +32,61 @@ class EventController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-{
-    // Validasi data input
-    $validatedData = $request->validate([
-        'ketua_pelaksana' => 'required|string|max:255',
-        'nama_event' => 'required|string|max:255',
-        'sekretaris' => 'required|string|max:255',
-        'bendahara' => 'required|string|max:255',
-        'tempat' => 'required|string|max:255',
-        'anggaran' => 'required|numeric',
-        'tanggal' => 'required|date',
-        'tamu_undangan' => 'nullable|array',
-        'divisi_humas' => 'nullable|array',
-        'divisi_acara' => 'nullable|array',
-        'divisi_perkap' => 'nullable|array',
-        'divisi_dekdok' => 'nullable|array',
-        'divisi_konsumsi' => 'nullable|array',
-        'keperluan_divisi' => 'nullable|array',
-        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        'file_dokumen' => 'nullable|mimes:doc,docx,xls,xlsx,pdf,ppt,pptx|max:2048',
-    ]);
-
-    // Konversi array menjadi string menggunakan implode
-    $validatedData['tamu_undangan'] = is_array($request->tamu_undangan) ? implode(', ', $request->tamu_undangan) : null;
-    $validatedData['divisi_humas'] = is_array($request->divisi_humas) ? implode(', ', $request->divisi_humas) : null;
-    $validatedData['divisi_acara'] = is_array($request->divisi_acara) ? implode(', ', $request->divisi_acara) : null;
-    $validatedData['divisi_perkap'] = is_array($request->divisi_perkap) ? implode(', ', $request->divisi_perkap) : null;
-    $validatedData['divisi_dekdok'] = is_array($request->divisi_dekdok) ? implode(', ', $request->divisi_dekdok) : null;
-    $validatedData['divisi_konsumsi'] = is_array($request->divisi_konsumsi) ? implode(', ', $request->divisi_konsumsi) : null;
-    $validatedData['keperluan_divisi'] = is_array($request->keperluan_divisi) ? implode(', ', $request->keperluan_divisi) : null;
-
-    // Menyimpan file foto jika ada
-    if ($request->hasFile('foto')) {
-        $fotoPath = $request->file('foto')->store('public/foto'); // Simpan di storage/public/foto
-        $validatedData['foto'] = $fotoPath;
+    {
+        // Set locale ke Indonesia untuk penamaan bulan
+        \Carbon\Carbon::setLocale('id');
+    
+        // Validasi data input
+        $validatedData = $request->validate([
+            'ketua_pelaksana' => 'required|string|max:255',
+            'nama_event' => 'required|string|max:255',
+            'sekretaris' => 'required|string|max:255',
+            'bendahara' => 'required|string|max:255',
+            'tempat' => 'required|string|max:255',
+            'anggaran' => 'required|numeric',
+            'tanggal' => 'required|date',
+            'tamu_undangan' => 'nullable|array',
+            'divisi_humas' => 'nullable|array',
+            'divisi_acara' => 'nullable|array',
+            'divisi_perkap' => 'nullable|array',
+            'divisi_dekdok' => 'nullable|array',
+            'divisi_konsumsi' => 'nullable|array',
+            'keperluan_divisi' => 'nullable|array',
+            'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'file_dokumen' => 'nullable|mimes:doc,docx,xls,xlsx,pdf,ppt,pptx|max:2048',
+        ]);
+    
+        // Konversi array menjadi string menggunakan implode
+        $validatedData['tamu_undangan'] = is_array($request->tamu_undangan) ? implode(', ', $request->tamu_undangan) : null;
+        $validatedData['divisi_humas'] = is_array($request->divisi_humas) ? implode(', ', $request->divisi_humas) : null;
+        $validatedData['divisi_acara'] = is_array($request->divisi_acara) ? implode(', ', $request->divisi_acara) : null;
+        $validatedData['divisi_perkap'] = is_array($request->divisi_perkap) ? implode(', ', $request->divisi_perkap) : null;
+        $validatedData['divisi_dekdok'] = is_array($request->divisi_dekdok) ? implode(', ', $request->divisi_dekdok) : null;
+        $validatedData['divisi_konsumsi'] = is_array($request->divisi_konsumsi) ? implode(', ', $request->divisi_konsumsi) : null;
+        $validatedData['keperluan_divisi'] = is_array($request->keperluan_divisi) ? implode(', ', $request->keperluan_divisi) : null;
+    
+        // Format tanggal agar menyimpan dengan nama bulan dan format 24 jam
+        $validatedData['tanggal'] = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->tanggal)
+                                    ->translatedFormat('d F Y H:i'); // Format dengan nama bulan dan waktu 24 jam
+    
+        // Menyimpan file foto jika ada
+        if ($request->hasFile('foto')) {
+            $fotoPath = $request->file('foto')->store('public/foto'); // Simpan di storage/public/foto
+            $validatedData['foto'] = $fotoPath;
+        }
+    
+        // Menyimpan file dokumen jika ada
+        if ($request->hasFile('file_dokumen')) {
+            $dokumenPath = $request->file('file_dokumen')->store('public/dokumen'); // Simpan di storage/public/dokumen
+            $validatedData['file_dokumen'] = $dokumenPath;
+        }
+    
+        // Simpan data ke dalam database
+        Event::create($validatedData);
+    
+        return redirect()->route('event.index')->with('success', 'Event berhasil ditambahkan');
     }
-
-    // Menyimpan file dokumen jika ada
-    if ($request->hasFile('file_dokumen')) {
-        $dokumenPath = $request->file('file_dokumen')->store('public/dokumen'); // Simpan di storage/public/dokumen
-        $validatedData['file_dokumen'] = $dokumenPath;
-    }
-
-    // Simpan data ke dalam database
-    Event::create($validatedData);
-
-    return redirect()->route('event.index')->with('success', 'Event berhasil ditambahkan');
-}
+    
 
     
 

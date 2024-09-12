@@ -2,6 +2,43 @@
 
 @section('content')
 <style>
+        /* CSS untuk menampilkan tombol di pojok kanan input manual */
+        .input-wrapper {
+        position: relative;
+        display: inline-block;
+        width: 100%;
+    }
+
+    /* Atur input manual */
+    .input-wrapper input {
+        width: 100%;
+        padding-right: 40px; /* Memberikan ruang untuk tombol di kanan */
+    }
+
+    /* Atur tombol tambah */
+    .add-button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #46d3c0;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+        display: none;
+        border:none !important; /* Tombol disembunyikan secara default */
+    }
+
+    /* Tampilkan tombol "Tambah" di mode mobile saat input manual dipilih */
+    @media (max-width: 768px) {
+        .add-button.active {
+            display: inline-block; /* Tampil di mobile saat input manual dipilih */
+        }
+    }
+
+
 .tag-input-container {
     display: flex;
     flex-wrap: wrap;
@@ -184,7 +221,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Tanggal & Jam</label>
-                                <input type="datetime-local" class="form-control" name="tanggal" value="{{ old('tanggal') }}">
+                                <input type="datetime-local" class="form-control" name="tanggal" value="{{ old('tanggal') }}" re>
                                 @error('tanggal')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -211,7 +248,7 @@
                                         <input type="text" id="tamuUndanganManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
                                         
                                         <!-- Hidden input untuk menyimpan hasil -->
-                                        <input type="hidden" name="tamu_undangan[]" id="tamuUndanganHidden">
+                                        <input type="hidden" name="tamu_undangan[]" id="tamuUndanganHidden" value="{{ old('tamu_undangan') }}">
                                     </div>
                                 </div>
                             </div>
@@ -230,7 +267,7 @@
                                             <option value="manual">Input Manual</option>
                                         </select>
                                         <input type="text" id="divisiAcaraManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
-                                        <input type="hidden" name="divisi_acara[]" id="divisiAcaraHidden">
+                                        <input type="hidden" name="divisi_acara[]" id="divisiAcaraHidden"  value="{{ old('divisi_acara') }}">
                                     </div>
                                 </div>
                             </div>
@@ -248,7 +285,7 @@
                                             <option value="manual">Input Manual</option>
                                         </select>
                                         <input type="text" id="divisiHumasManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
-                                        <input type="hidden" name="divisi_humas[]" id="divisiHumasHidden">
+                                        <input type="hidden" name="divisi_humas[]" id="divisiHumasHidden"  value="{{ old('divisi_humas') }}">
                                     </div>
                                 </div>
                             </div>
@@ -266,7 +303,7 @@
                                             <option value="manual">Input Manual</option>
                                         </select>
                                         <input type="text" id="divisiPerkapManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
-                                        <input type="hidden" name="divisi_perkap[]" id="divisiPerkapHidden">
+                                        <input type="hidden" name="divisi_perkap[]" id="divisiPerkapHidden"  value="{{ old('divisi_perkap') }}">
                                     </div>
                                 </div>
                             </div>
@@ -284,7 +321,7 @@
                                             <option value="manual">Input Manual</option>
                                         </select>
                                         <input type="text" id="divisiDekdokManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
-                                        <input type="hidden" name="divisi_dekdok[]" id="divisiDekdokHidden">
+                                        <input type="hidden" name="divisi_dekdok[]" id="divisiDekdokHidden"  value="{{ old('divisi_dekdok') }}">
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +339,7 @@
                                             <option value="manual">Input Manual</option>
                                         </select>
                                         <input type="text" id="divisiKonsumsiManualInput" class="form-control" placeholder="Masukkan nama manual" style="display:none;">
-                                        <input type="hidden" name="divisi_konsumsi[]" id="divisiKonsumsiHidden">
+                                        <input type="hidden" name="divisi_konsumsi[]" id="divisiKonsumsiHidden"  value="{{ old('divisi_konsumsi') }}">
                                     </div>
                                 </div>
                             </div>                        
@@ -314,7 +351,7 @@
                                 <label for="file_dokumen">File Dokumen (Word, Excel, PDF, PowerPoint)</label>
                                 <div class="file-drop-area" id="file-drop-area">
                                     Seret & Lepas file di sini atau klik untuk mengunggah
-                                    <input type="file" class="form-control" id="file_dokumen" name="file_dokumen" accept=".doc,.docx,.xls,.xlsx,.pdf,.ppt,.pptx" required>
+                                    <input type="file" class="form-control" id="file_dokumen" name="file_dokumen" accept=".doc,.docx,.xls,.xlsx,.pdf,.ppt,.pptx" >
                                 </div>
                                 <div class="uploaded-file" id="uploaded-file" style="display: none;">
                                     <span id="file-name"></span>
@@ -406,6 +443,8 @@
 });
 
 
+
+
 document.addEventListener('DOMContentLoaded', () => {
     const divisiSelectors = [
         { selectId: 'divisiAcaraSelect', inputId: 'divisiAcaraManualInput', containerId: 'divisiAcaraContainer', hiddenInputId: 'divisiAcaraHidden' },
@@ -425,48 +464,28 @@ document.addEventListener('DOMContentLoaded', () => {
         const manualInput = document.getElementById(inputId);
         const container = document.getElementById(containerId);
         const hiddenInput = document.getElementById(hiddenInputId);
-        let tags = [];
 
-        // Ketika dropdown berubah
-        select.addEventListener('change', function () {
-            const selectedValue = this.value;
+        // Buat wrapper untuk input dan tombol tambah
+        const wrapper = document.createElement('div');
+        wrapper.classList.add('input-wrapper');
+        manualInput.parentNode.insertBefore(wrapper, manualInput);
+        wrapper.appendChild(manualInput);
 
-            if (selectedValue === "manual") {
-                // Tampilkan input manual jika opsi "Input Manual" dipilih
-                manualInput.style.display = 'block';
-                manualInput.focus();
-            } else if (selectedValue !== "") {
-                // Tambahkan tag jika pengurus dipilih
-                if (!tags.includes(selectedValue)) {
-                    tags.push(selectedValue);
-                    addTag(selectedValue, container, tags, hiddenInput);
-                }
+        // Buat tombol tambah
+        const addButton = document.createElement('button');
+        addButton.textContent = 'Tambah';
+        addButton.classList.add('add-button');
+        wrapper.appendChild(addButton); // Tambahkan tombol di dalam wrapper
 
-                // Reset dropdown setelah pilihan
-                select.value = '';
-            }
-        });
+        let tags = hiddenInput.value ? hiddenInput.value.split(',') : [];
 
-        // Jika input manual diisi dan ditekan Enter
-        manualInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter' && manualInput.value.trim() !== "") {
-                const value = manualInput.value.trim();
-
-                if (!tags.includes(value)) {
-                    tags.push(value);
-                    addTag(value, container, tags, hiddenInput);
-                }
-
-                // Kosongkan input manual dan sembunyikan lagi
-                manualInput.value = '';
-                manualInput.style.display = 'none';
-
-                e.preventDefault();
-            }
-        });
+        // Update hidden input dari array tags setiap kali ada perubahan
+        function updateHiddenInput() {
+            hiddenInput.value = tags.join(','); // Update nilai hidden input dengan tag yang terpilih
+        }
 
         // Fungsi untuk menambahkan tag
-        function addTag(value, container, tags, hiddenInput) {
+        function addTag(value) {
             const tag = document.createElement('div');
             tag.classList.add('tag');
 
@@ -475,21 +494,75 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const removeButton = document.createElement('button');
             removeButton.textContent = '×';
+
             removeButton.addEventListener('click', () => {
-                tag.remove();
-                tags = tags.filter(tagValue => tagValue !== value);
-                hiddenInput.value = tags.join(','); // Perbarui nilai hidden input
+                tag.remove(); // Hapus tag dari tampilan
+                tags = tags.filter(tagValue => tagValue !== value); // Hapus dari array tags
+                updateHiddenInput(); // Perbarui hidden input
             });
 
             tag.appendChild(nameSpan);
             tag.appendChild(removeButton);
-            container.insertBefore(tag, select);
-
-            hiddenInput.value = tags.join(','); // Set nilai hidden input
+            container.insertBefore(tag, select); // Tambahkan tag ke container
         }
+
+        // Tambahkan nama dari input manual
+        function handleManualInput() {
+            const manualValues = manualInput.value.split(',').map(v => v.trim()).filter(v => v !== "");
+
+            manualValues.forEach(value => {
+                if (!tags.includes(value)) {
+                    tags.push(value); // Tambahkan setiap nilai unik ke tags
+                    addTag(value); // Tampilkan tag
+                }
+            });
+
+            updateHiddenInput(); // Perbarui hidden input setelah semua nama manual ditambahkan
+            manualInput.value = ''; // Kosongkan input manual
+        }
+
+        // Ketika tombol "Tambah" diklik di mode mobile, tambahkan nama dari input manual
+        addButton.addEventListener('click', function (e) {
+            e.preventDefault(); // Cegah tombol dari menyebabkan form submit
+            handleManualInput();
+        });
+
+        // Jika input manual diisi dan Enter ditekan di desktop
+        manualInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && manualInput.value.trim() !== "") {
+                handleManualInput();
+                e.preventDefault(); // Cegah halaman dari submit
+            }
+        });
+
+        // Ketika dropdown berubah
+        select.addEventListener('change', function () {
+            const selectedValue = this.value;
+
+            if (selectedValue === "manual") {
+                manualInput.style.display = 'block';
+                addButton.classList.add('active'); // Tampilkan tombol saat input manual dipilih
+                manualInput.focus();
+            } else {
+                // Sembunyikan input manual dan tombol tambah jika item lain dipilih
+                manualInput.style.display = 'none';
+                addButton.classList.remove('active'); // Sembunyikan tombol tambah
+                addButton.style.display = 'none';
+
+                if (selectedValue !== "" && !tags.includes(selectedValue)) {
+                    // Jika item belum ada di tags, tambahkan
+                    tags.push(selectedValue);
+                    addTag(selectedValue);
+                    updateHiddenInput(); // Perbarui hidden input
+                    select.value = ''; // Reset dropdown
+                }
+            }
+        });
+
+        // Inisialisasi tag dari hidden input (jika sudah ada sebelumnya)
+        tags.forEach(tag => addTag(tag));
     }
 });
-
 
 
 </script>
