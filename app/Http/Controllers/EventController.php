@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -22,7 +23,9 @@ class EventController extends Controller
      */
     public function create()
     {
-        return view('dashboard.event.create');
+        $penguruses = Pengurus::all();
+
+        return view('dashboard.event.create', compact('penguruses'));
     }
 
     /**

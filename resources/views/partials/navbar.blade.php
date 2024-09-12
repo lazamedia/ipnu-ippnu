@@ -26,18 +26,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ ($active === 'profile') ? 'active' : '' }}" href="/profile">Profile</a>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        INFO
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="/project">Project</a></li>
-                        <li><a class="dropdown-item" href="/contact">Kontak</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="/posts">News Post</a></li>
-                    </ul>
-                </li>   
-               
+                               
                 <li class="nav-item">
                     <a class="nav-link {{ ($active === 'anggota') ? 'active' : '' }}" href="/anggota">Anggota</a>
                 </li>
@@ -54,6 +43,18 @@
                 <li class="nav-item">
                     <a class="nav-link {{ ($active === 'test') ? 'active' : '' }}" href="/test">Test</a>
                 </li>  
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Event
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="/project">Semua Event</a></li>
+                        <li><a class="dropdown-item" href="/contact">Makesta</a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="/posts">Colaborasi</a></li>
+                    </ul>
+                </li>   
             </ul>
 
             <ul class="navbar-nav ms-auto">

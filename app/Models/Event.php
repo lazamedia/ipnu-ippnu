@@ -15,7 +15,7 @@ class Event extends Model
      // Tentukan kolom yang bisa diisi secara massal
      protected $fillable = [
         'ketua_pelaksana',
-        'wakil',
+        'nama_event',
         'sekretaris',
         'bendahara',
         'tempat',

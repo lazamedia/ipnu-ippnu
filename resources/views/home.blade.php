@@ -29,28 +29,28 @@ h4{
         <div class="box-hero hero-kanan">
             <div class="slider">
                 <div class="slide active">
-                    <img src="img/s-1.jpg"  loading="lazy"  alt="Slide 1">
+                    <img src="img/s-3.jpg"  loading="lazy"  alt="Slide 1">
                     <div class="content">
                         <h4>PR IPNU & IPPNU Pujut 01</h4>
                         <p>Berjuang demi kejayaan NU</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/s-2.jpg"  loading="lazy"  alt="Slide 2">
+                    <img src="img/s-1.jpg"  loading="lazy"  alt="Slide 2">
                     <div class="content">
                         <h4>Buka Bersama</h4>
                         <p>Kegiatan rutin ramadhan</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/s-3.jpg"  loading="lazy"  alt="Slide 3">
+                    <img src="img/s-4.jpg"  loading="lazy"  alt="Slide 3">
                     <div class="content">
                         <h4>ZARKASI</h4>
                         <p>Ziarah dan Rekreasi IPNU - IPPNU</p>
                     </div>
                 </div>
                 <div class="slide">
-                    <img src="img/s-4.jpg"  loading="lazy"  alt="Slide 4">
+                    <img src="img/s-2.jpg"  loading="lazy"  alt="Slide 4">
                     <div class="content">
                         <h4>MAKESTA</h4>
                         <p>Masa Kesetiaan Anggota</p>
@@ -110,86 +110,95 @@ h4{
 {{-- --- --}}
 
 <style>
-    /* Style untuk container dan layout responsif */
-    .container-event {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 20px;
-        padding: 20px;
-    }
+/* Style untuk container dan layout responsif */
+.container-event {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px 100px;
+    margin-bottom: 30px;
+}
 
+.box-event {
+    display: flex;
+    flex-direction: column; /* Memastikan konten disusun secara vertikal */
+    flex-basis: calc(20% - 20px); /* 3 kolom dalam satu baris */
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.box-event:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.box-event img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.box-event h4, .box-event p {
+    margin: 5px 10px;
+}
+
+.box-event h4 {
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: bold;
+}
+
+.box-event p {
+    font-size: 0.8rem;
+    color: #666;
+    flex-grow: 1; /* Memungkinkan p konten utama untuk memenuhi ruang yang ada */
+}
+
+/* Box date berada di bagian bawah */
+.box-event .date {
+    padding: 10px;
+    width: auto;
+    background-color: #ffffff;
+    color: #858585;
+    font-size: 10pt;
+    text-align: right;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 15px;
+}
+
+.box-event .box-content {
+    padding-bottom: 30px; /* Menyediakan ruang untuk kotak tanggal */
+}
+
+/* Responsif untuk tampilan tablet */
+@media (max-width: 1024px) {
     .box-event {
-        position: relative;
-        flex-basis: calc(20% - 20px); /* 3 kolom dalam satu baris */
-        background-color: #fff;
-        border: 1px solid #e0e0e0;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        flex-basis: calc(50% - 20px); /* 2 kolom dalam satu baris */
     }
-
-    .box-event:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .box-event img {
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-bottom: 1px solid #e0e0e0;
-    }
-
-    .box-event h4 {
-        margin: 10px;
-        font-size: 1.2rem;
-        color: #333;
-        font-weight: bold;
-    }
-
-    .box-event p {
-        margin: 10px;
-        font-size: 0.95rem;
-        color: #666;
-    }
-
-
-    .box-event .date {
+    .container-event {
         padding: 10px;
-        width: auto;
-        background-color: #ffffff;
-        color: #858585;
-        font-size: 10pt;
-        text-align: right;
     }
+}
 
-
-    .box-event .box-content {
-        padding-bottom: 30px; /* Menyediakan ruang untuk kotak tanggal */
+/* Responsif untuk tampilan ponsel */
+@media (max-width: 768px) {
+    .box-event {
+        flex-basis: 100%; /* 1 kolom penuh dalam satu baris */
     }
+}
 
+/* Judul Event */
+.judul-event {
+    text-align: center;
+    margin-bottom: 20px;
+}
 
-    /* Responsif untuk tampilan tablet */
-    @media (max-width: 1024px) {
-        .box-event {
-            flex-basis: calc(50% - 20px); /* 2 kolom dalam satu baris */
-        }
-    }
-
-    /* Responsif untuk tampilan ponsel */
-    @media (max-width: 768px) {
-        .box-event {
-            flex-basis: 100%; /* 1 kolom penuh dalam satu baris */
-        }
-    }
-
-    /* Judul Event */
-    .judul-event {
-        text-align: center;
-        margin-bottom: 20px;
-    }
 
 </style>
 
@@ -201,18 +210,63 @@ h4{
     <div class="container-event">
         <!-- Box Event 1 -->
         <div class="box-event">
-            <img src="img/s-1.png" loading="lazy" alt="Event 1">
-            
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Selapanan Rutinan IPNU PUJUT</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div class="date">10 Januari 2024</div>
+        </div>
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
                 <h4>Buka Bersama</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                
-        
             <div class="date">10 Januari 2024</div>
-        
         </div>
-        
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Buka Bersama</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">10 Januari 2024</div>
+        </div>
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Buka Bersama</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">10 Januari 2024</div>
+        </div>       
+    </div>
+</section>
 
-       
+<section>
+    <div class="judul-event">
+        <h3> Artikel Terbaru </h3>
+        <p>Ikuti terus website kami untuk melihat info terbaru</p>
+    </div>
+    <div class="container-event">
+        <!-- Box Event 1 -->
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Selapanan Rutinan IPNU PUJUT</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                <div class="date">10 Januari 2024</div>
+        </div>
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Buka Bersama</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">10 Januari 2024</div>
+        </div>
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Buka Bersama</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">10 Januari 2024</div>
+        </div>
+        <div class="box-event">
+            <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
+                <h4>Buka Bersama</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+            <div class="date">10 Januari 2024</div>
+        </div>       
     </div>
 </section>
 

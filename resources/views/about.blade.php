@@ -66,7 +66,7 @@
     <div class="body-blank">
         <img src="img/maintenance.png" alt="">
         <h4>Halaman Ini Sedang Dalam Perbaikan</h4>
-        <p>Kunjungi sosial media kami untuk update terbaru dari kami</p>
+        <p>Kunjungi sosial media kami untuk update terbaru dari kami.</p>
         <ul class="mtn-icons">
             <li><a href="https://wa.me/6282134749670" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
             <li><a href="https://www.instagram.com/pripnuippnu.pujut01/" target="_blank"><i class="fab fa-instagram"></i></a></li>

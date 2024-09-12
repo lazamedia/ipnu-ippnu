@@ -21,40 +21,44 @@ class PengurusController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi input pengurus
-        $data = $request->validate([
-            'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi gambar maksimal 2MB
-            'nama_lengkap' => 'required|string|max:255',
-            'no_wa' => 'required|string|max:15|unique:users,username',  // Nomor WA digunakan sebagai username
-            'email' => 'nullable|email|unique:users,email',
-            'divisi' => 'required|string',
-            'pelajar' => 'required|string',
-        ]);
-    
-        // Upload foto jika ada
-        if ($request->hasFile('foto')) {
-            // Simpan gambar di storage/fotos
-            $data['foto'] = $request->file('foto')->store('fotos', 'public');
-        }
-    
-        // Simpan data pengurus ke database
-        $pengurus = Pengurus::create($data);
-    
-        // Buat akun user otomatis
-        $user = User::create([
-            'name' => $data['nama_lengkap'],
-            'foto' => $data['foto'],
-            'username' => $data['no_wa'],  // Nomor WA sebagai username
-            'email' => $data['email'],
-            'password' => bcrypt('ipnuippnupujut'),  // Password default
-        ]);
-    
-        // Assign role 'admin' ke user
-        $user->assignRole('admin');
-    
-        return redirect()->route('pengurus.index')->with('success', 'Pengurus dan akun user berhasil dibuat dengan role admin.');
+{
+    // Validasi input pengurus
+    $data = $request->validate([
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048', // Validasi gambar maksimal 2MB
+        'nama_lengkap' => 'required|string|max:255',
+        'no_wa' => 'required|string|max:15|unique:users,username',  // Nomor WA digunakan sebagai username
+        'email' => 'nullable|email|unique:users,email',
+        'divisi' => 'required|string',
+        'pelajar' => 'required|string',
+    ]);
+
+    // Upload foto jika ada
+    if ($request->hasFile('foto')) {
+        // Simpan gambar di storage/fotos
+        $data['foto'] = $request->file('foto')->store('fotos', 'public');
+    } else {
+        // Jika tidak ada foto, set foto sebagai null
+        $data['foto'] = null;
     }
+
+    // Simpan data pengurus ke database
+    $pengurus = Pengurus::create($data);
+
+    // Buat akun user otomatis
+    $user = User::create([
+        'name' => $data['nama_lengkap'],
+        'foto' => $data['foto'], // Tetap null jika tidak ada foto yang diunggah
+        'username' => $data['no_wa'],  // Nomor WA sebagai username
+        'email' => $data['email'],
+        'password' => bcrypt('ipnuippnupujut'),  // Password default
+    ]);
+
+    // Assign role 'admin' ke user
+    $user->assignRole('admin');
+
+    return redirect()->route('pengurus.index')->with('success', 'Pengurus dan akun user berhasil dibuat dengan role admin.');
+}
+
 
 
     public function show($id)

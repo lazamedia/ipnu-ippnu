@@ -105,8 +105,21 @@
                                     <td>{{ $event->tempat }}</td>
                                     <td>{{ \Carbon\Carbon::parse($event->tanggal)->format('d-m-Y H:i') }}</td>
                                     <td>{{ $event->anggaran }}</td>
-                                    <td>{{ $event->divisi_humas }}</td>
-                                    <td>{{ $event->tamu_undangan }}</td>
+                                    <td>
+                                        <ul>
+                                            @foreach(explode(',', $event->divisi_humas) as $divisi)
+                                                <li> {{ trim($divisi) }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            @foreach(explode(',', $event->tamu_undangan) as $tamu)
+                                                <li> {{ trim($tamu) }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    
                                     <td>
                                         <a href="{{ route('event.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
                                         <form action="{{ route('event.destroy', $event->id) }}" method="POST" class="delete-form d-inline">
