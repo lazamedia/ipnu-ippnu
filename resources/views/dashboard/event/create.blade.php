@@ -26,11 +26,14 @@
         border: none; 
         padding: 5px 10px;
         cursor: pointer;
+        outline: none !important;
         font-size: 16px;
         display: none;
         border:none !important; /* Tombol disembunyikan secara default */
     }
-
+    .add-button:focus {
+    outline: none !important; /* Pastikan tidak ada outline saat tombol dalam state focus */
+    }
     /* Tampilkan tombol "Tambah" di mode mobile saat input manual dipilih */
     @media (max-width: 768px) {
         .add-button.active {
@@ -71,7 +74,11 @@
     line-height: 1;
     background-color: #ffffff;
     border-radius: 50%;
+    outline: none !important;
 }
+.tag-button:focus {
+    outline: none !important; /* Pastikan tidak ada outline saat tombol dalam state focus */
+    }
 
 .tag-input-container input {
     flex-grow: 1;
@@ -122,7 +129,7 @@
                             <div class="form-group row">
                                 <label for="nama_event" class="col-sm-3 col-form-label">Nama Event</label>
                                 <div class="col-sm-9">
-                                    <input type="text" class="form-control" id="nama_event" name="nama_event" value="{{ old('nama_event') }}">
+                                    <input type="text" class="form-control" id="nama_event" name="nama_event" value="{{ old('nama_event') }}" required>
                                     @error('nama_event')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -200,7 +207,7 @@
                         <div class="form-row">
                             <div class="form-group col-md-4">
                                 <label for="tempat">Tempat</label>
-                                <input type="text" class="form-control" id="tempat" name="tempat" value="{{ old('tempat') }}">
+                                <input type="text" class="form-control" id="tempat" name="tempat" value="{{ old('tempat') }}" required>
                                 @error('tempat')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
@@ -213,7 +220,7 @@
                                             Rp
                                         </div>
                                     </div>
-                                    <input type="text" class="form-control currency" name="anggaran" value="{{ old('anggaran') }}">
+                                    <input type="text" class="form-control currency" name="anggaran" value="{{ old('anggaran') }}" required>
                                     @error('anggaran')
                                         <div class="alert alert-danger">{{ $message }}</div>
                                     @enderror
@@ -221,7 +228,7 @@
                             </div>
                             <div class="form-group col-md-4">
                                 <label>Tanggal & Jam</label>
-                                <input type="datetime-local" class="form-control" name="tanggal" value="{{ old('tanggal') }}" re>
+                                <input type="datetime-local" class="form-control" name="tanggal" value="{{ old('tanggal') }}" required>
                                 @error('tanggal')
                                     <div class="alert alert-danger">{{ $message }}</div>
                                 @enderror
