@@ -2,54 +2,8 @@
 
 @section('content')
 
-<style>
-    .set-tabel {
-        width: 100%;
-        padding: 10px 0;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-    .aksi {
-        color: #000000;
-    }
-    .aksi-edit {
-        color: #777777;
-        font-size: 1rem;
-        margin-right: 10px;
-    }
-    .aksi-delete {
-        color: #777777;
-        font-size: 1rem;
-    }
-    .box-tabel {
-        padding: 10px;
-    }
+<link rel="stylesheet" href="{{ asset ('assets/css/customtabel.css') }}">
 
-    @media (max-width: 768px) {
-        .set-tabel {
-            flex-direction: column;
-            align-items: flex-start;
-        }
-        .btn-actions, .search-box {
-            width: 100%;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: flex-end;
-        }
-        .h-header {
-            padding: 10px;
-        }
-    }
-
-    /* Menghilangkan shadow dan border outline pada tombol SweetAlert */
-    .swal2-styled:focus {
-        box-shadow: none !important;
-        outline: none !important;
-        border: none !important;
-    }
-</style>
 
 <div class="row">
     <div class="col-12">

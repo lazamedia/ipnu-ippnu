@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\SantriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WhatsAppBotController;
 use App\Http\Middleware\RoleMiddleware;
@@ -77,6 +78,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin,super_admin'])->group
             "active" => "dashboard"
         ]);
     });
+
     Route::get('/dashboard/makesta', function () {
         return view('dashboard.makesta.index', [
             "title" => "dashboard",
@@ -95,6 +97,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin,super_admin'])->group
     Route::resource('dashboard/pengurus', PengurusController::class);
     Route::post('dashboard/pengurus/bulk-delete', [PengurusController::class, 'bulkDelete'])->name('pengurus.bulk-delete');
     
+    Route::resource('dashboard/santri', SantriController::class);
         
     Route::resource('dashboard/event', EventController::class);
     Route::post('/dashboard/event/bulk-delete', [EventController::class, 'bulkDelete'])->name('dashboard.event.bulk-delete');

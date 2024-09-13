@@ -22,31 +22,34 @@
               </a>
           </li>
           
-          <li class="{{ Request::is('dashboard/makesta') ? 'active' : '' }}">
-              <a href="{{ url('dashboard/makesta') }}" class="nav-link">
-                  <i data-feather="slack"></i>
-                  <span>Makesta</span>
-              </a>
-          </li>
-
-          <li class="{{ Request::is('dashboard/event') ? 'active' : '' }}">
-            <a href="{{ url('dashboard/event') }}" class="nav-link">
-                <i data-feather="calendar"></i>
-                <span>Event</span>
+          <li class="{{ Request::is('dashboard/santri') ? 'active' : '' }}">
+            <a href="{{ url('dashboard/santri') }}" class="nav-link">
+                <i data-feather="users"></i>
+                <span>Data Santri</span>
             </a>
-        </li>
-          {{-- <li class="dropdown {{ Request::is('event*') ? 'active' : '' }}">
-              <a href="#" class="menu-toggle nav-link has-dropdown">
-                  <i data-feather="calendar"></i>
-                  <span>Event</span>
-              </a>
-              <ul class="dropdown-menu">
-                  <li><a class="nav-link" href="{{ url('dashboard/event/makesta') }}">Makesta</a></li>
-                  <li><a class="nav-link" href="{{ url('dashboard/event/ramadhan') }}">Ramadhan</a></li>
-                  <li><a class="nav-link" href="{{ url('dashboard/event/other') }}">Other</a></li>
-              </ul>
-          </li> --}}
+          </li>
+          
+            <li class="dropdown {{ Request::is('event*') ? 'active' : '' }}">
+                <a href="#" class="menu-toggle nav-link has-dropdown">
+                    <i data-feather="calendar"></i>
+                    <span>Event</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="nav-link" href="{{ url('dashboard/event') }}">Create Event</a></li>
+                    <li><a class="nav-link" href="{{ url('dashboard/event/ramadhan') }}">Keperluan Event</a></li>
+                    <li><a class="nav-link" href="{{ url('dashboard/event/other') }}">Anggaran</a></li>
+                    <li><a class="nav-link" href="{{ url('dashboard/event/other') }}">Jadwal Event</a></li>
+                    <li><a class="nav-link" href="{{ url('dashboard/event/other') }}">Evaluasi</a></li>
+                </ul>
+            </li>
 
+            <li class="{{ Request::is('dashboard/makesta') ? 'active' : '' }}">
+                <a href="{{ url('dashboard/makesta') }}" class="nav-link">
+                    <i data-feather="slack"></i>
+                    <span>Data Makesta</span>
+                </a>
+            </li>
+        
           <li class="menu-header">Media</li>
           <li class="{{ Request::is('media/artikel') ? 'active' : '' }}">
               <a class="nav-link" href="{{ url('media/artikel') }}">

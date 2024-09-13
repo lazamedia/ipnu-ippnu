@@ -21,7 +21,8 @@ body {
 }
 @media (max-width: 768px) {
     .login-box {
-        width: 80%;
+        width: 90%;
+        max-width: 400px;
         height: auto;
     }
 }
@@ -36,7 +37,10 @@ body {
 .login-box .user-box {
     position: relative;
 }
-
+.login-box .btn {
+    border-bottom: 1px solid #004741;
+    box-shadow:  0 4px 6px rgba(0, 0, 0, 0.1);
+}
 .login-box .user-box input {
     width: 100%;
     padding: 10px 0;

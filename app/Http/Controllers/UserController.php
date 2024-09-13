@@ -16,7 +16,7 @@ class UserController extends Controller
         $users = User::with('roles')->get();  // Ambil semua user dengan roles-nya
         $roles = ModelsRole::all();  // Ambil semua role dari database
     
-        return view('dashboard.auth.index', compact('users', 'roles'));  // Kirim data users dan roles ke view
+        return view('dashboard.auth.index', compact('users', 'roles')); 
     }
 
     // Fungsi untuk menghapus user

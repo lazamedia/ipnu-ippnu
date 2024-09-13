@@ -9,6 +9,7 @@
      {{ session('loginError') }}
  </div>
  @endif
+ 
 <div class="login-box">
     <h2>Login</h2>
 
@@ -53,7 +54,7 @@
                 alertBox.remove();
             }, 500); // Waktu untuk transisi
         }
-    }, 3000); // Hapus setelah 3 detik
+    }, 2000); // Hapus setelah 3 detik
 </script>
 
 <!-- Script untuk menghitung mundur waktu login -->

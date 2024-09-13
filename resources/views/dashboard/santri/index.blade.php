@@ -4,17 +4,16 @@
 
 <link rel="stylesheet" href="{{ asset ('assets/css/customtabel.css') }}">
 
-
 <div class="row">
     <div class="col-12">
         <div class="card pt-4">
             <div class="card-header set-tabel">
                 <div class="h-header">
-                    <h4>Data Pengurus</h4>
+                    <h4>Data Santri Pujut</h4>
                 </div>
                 <div class="d-flex flex-wrap align-items-center justify-content-end">
                     <div class="btn-actions d-flex mr-3">
-                        <a href="{{ route('pengurus.create') }}" class="btn btn-primary mr-2">
+                        <a href="{{ route('santri.create') }}" class="btn btn-primary mr-2">
                             <i class="fas fa-plus"></i> Create
                         </a>
                         <button id="bulk-delete-btn" class="btn btn-danger mr-2" disabled>
@@ -40,38 +39,39 @@
                             <thead>
                                 <tr>
                                     <th><input type="checkbox" id="select-all"></th>
-                                    <th>Foto</th>
+                                    <th>No</th>
                                     <th>Nama Lengkap</th>
-                                    <th>Divisi</th>
-                                    <th>No Whatsapp</th>
-                                    <th>Email</th>
+                                    <th>Nama Pesantren</th>
+                                    <th>Alamat Pesantren</th>
+                                    <th>RT/RW</th>
+                                    <th>Nama Orangtua</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($pengurus as $item)
+                                
                                 <tr>
-                                    <td><input type="checkbox" class="checkbox-pengurus" value="{{ $item->id }}"></td>
+                                    <td><input type="checkbox" class="checkbox-pengurus" value=""></td>
+                                    <td>01</td>
+                                    <td>Lazuardi Mandegar</td>
+                                    <td>Ponpes Roudlotul Mubtadiin</td>
+                                    <td>Jepara</td>
+                                    <td>Rt.02</td>
+                                    <td>Tri Budiyanto</td>
+                                    <td><div class="badge badge-success badge-shadow">Lulus</div></td>
                                     <td>
-                                        <img alt="image" src="{{ asset('storage/' . $item->foto) }}" class="rounded-circle" width="35" height="35"
-                                        data-toggle="tooltip" title="{{ $item->nama_lengkap }}">
-                                    </td>
-                                    <td>{{ $item->nama_lengkap }}</td>
-                                    <td>{{ $item->divisi }}</td>
-                                    <td>{{ $item->no_wa }}</td>
-                                    <td>{{ $item->email }}</td>
-                                    <td>
-                                        <a href="{{ route('pengurus.edit', $item->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="{{ route('pengurus.destroy', $item->id) }}" method="POST" class="delete-form d-inline">
-                                            @csrf
-                                            @method('DELETE')
+                                        <a href="" class="btn btn-warning btn-sm">Edit</a>
+                                        <form action="" method="POST" class="delete-form d-inline">
+                                            
                                             <button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button>
                                         </form>
                                     </td>
                                 </tr>
-                                @endforeach
+                                
                             </tbody>
                         </table>
+                        
                     </div>
                 </div>
                 
