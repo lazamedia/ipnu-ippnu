@@ -3,12 +3,16 @@
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WhatsAppBotController;
 use App\Http\Middleware\RoleMiddleware;
 
 
+
+Route::get('/event/viewpdf', [PdfController::class, 'viewPDF'])->name('event.viewpdf');
+Route::get('/event/downloadpdf', [PdfController::class, 'downloadPDF'])->name('event.downloadpdf');
 
 // Controller Untuk Halaman HOME
 
@@ -18,16 +22,21 @@ Route::get('/', function () {
         "active" => "home"
     ]);
 });
-
-
-Route::middleware([RoleMiddleware::class . ':user'])->group(function () {
-    Route::get('/test', function () {
-        return view('test', [
-            "title" => "test",
-            "active" => "test" 
-        ]);
-    });
+Route::get('/test', function () {
+    return view('test', [
+        "title" => "test",
+        "active" => "test" 
+    ]);
 });
+
+// Route::middleware([RoleMiddleware::class . ':admin'])->group(function () {
+//     Route::get('/test', function () {
+//         return view('test', [
+//             "title" => "test",
+//             "active" => "test" 
+//         ]);
+//     });
+// });
 
 Route::get('/anggota', function () {
     return view('anggota',[

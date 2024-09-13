@@ -95,44 +95,77 @@ class EventController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-    {
-        $event = Event::findOrFail($id);
-        return view('dashboard.event.edit', compact('event'));
-    }
+{
+    $event = Event::findOrFail($id); // Mencari event berdasarkan ID
+    $penguruses = Pengurus::all(); // Mengambil data pengurus
+
+    // Mengirimkan data event dan pengurus ke view edit
+    return view('dashboard.event.edit', compact('event', 'penguruses'));
+}
+
 
     /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, $id)
-    {
-        $event = Event::findOrFail($id);
+{
+    $event = Event::findOrFail($id);
 
-        // Validasi input
-        $validated = $request->validate([
-            'nama_event' => 'required',
-            'tanggal' => 'required|date',
-            'lokasi' => 'required',
-            'link_drive' => 'required|url',
-            'file_dokumen' => 'nullable|mimes:pdf|max:5048',
-        ]);
+    // Validasi input
+    $validated = $request->validate([
+        'ketua_pelaksana' => 'required|string|max:255',
+        'nama_event' => 'required|string|max:255',
+        'sekretaris' => 'required|string|max:255',
+        'bendahara' => 'required|string|max:255',
+        'tempat' => 'required|string|max:255',
+        'anggaran' => 'required|numeric',
+        'tanggal' => 'required|date',
+        'tamu_undangan' => 'nullable|array',
+        'divisi_humas' => 'nullable|array',
+        'divisi_acara' => 'nullable|array',
+        'divisi_perkap' => 'nullable|array',
+        'divisi_dekdok' => 'nullable|array',
+        'divisi_konsumsi' => 'nullable|array',
+        'foto' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        'file_dokumen' => 'nullable|mimes:doc,docx,xls,xlsx,pdf,ppt,pptx|max:2048',
+    ]);
 
-        // Cek jika file dokumen baru diupload
-        if ($request->hasFile('file_dokumen')) {
-            // Hapus file lama jika ada
-            if ($event->file_dokumen) {
-                Storage::disk('public')->delete($event->file_dokumen);
-            }
+    // Konversi array menjadi string menggunakan implode
+    $validated['tamu_undangan'] = is_array($request->tamu_undangan) ? implode(', ', $request->tamu_undangan) : null;
+    $validated['divisi_humas'] = is_array($request->divisi_humas) ? implode(', ', $request->divisi_humas) : null;
+    $validated['divisi_acara'] = is_array($request->divisi_acara) ? implode(', ', $request->divisi_acara) : null;
+    $validated['divisi_perkap'] = is_array($request->divisi_perkap) ? implode(', ', $request->divisi_perkap) : null;
+    $validated['divisi_dekdok'] = is_array($request->divisi_dekdok) ? implode(', ', $request->divisi_dekdok) : null;
+    $validated['divisi_konsumsi'] = is_array($request->divisi_konsumsi) ? implode(', ', $request->divisi_konsumsi) : null;
 
-            // Simpan file baru
-            $filePath = $request->file('file_dokumen')->storeAs('documents', uniqid().'.'.$request->file('file_dokumen')->getClientOriginalExtension(), 'public');
-            $validated['file_dokumen'] = $filePath;
+    // Format tanggal
+    $validated['tanggal'] = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->tanggal)
+                              ->translatedFormat('d F Y H:i');
+
+    // Cek dan simpan file foto jika ada
+    if ($request->hasFile('foto')) {
+        if ($event->foto) {
+            Storage::disk('public')->delete($event->foto);
         }
-
-        // Update data di database
-        $event->update($validated);
-
-        return redirect()->route('dashboard.event.index')->with('success', 'Event updated successfully.');
+        $fotoPath = $request->file('foto')->store('public/foto');
+        $validated['foto'] = $fotoPath;
     }
+
+    // Cek dan simpan file dokumen jika ada
+    if ($request->hasFile('file_dokumen')) {
+        if ($event->file_dokumen) {
+            Storage::disk('public')->delete($event->file_dokumen);
+        }
+        $dokumenPath = $request->file('file_dokumen')->store('public/dokumen');
+        $validated['file_dokumen'] = $dokumenPath;
+    }
+
+    // Update data event
+    $event->update($validated);
+
+    return redirect()->route('event.index')->with('success', 'Event berhasil diperbarui');
+}
+
 
     /**
      * Remove the specified resource from storage.
