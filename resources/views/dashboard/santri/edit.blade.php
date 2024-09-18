@@ -13,22 +13,23 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4>Tambah data Santri</h4>
+                <h4>Edit Data Santri</h4>
             </div>
             <div class="card-body">
-                <form id="createSantriForm">
+                <form id="editSantriForm">
                     @csrf
+                    @method('PUT')
                     <div class="form-group row">
                         <label for="nama" class="col-sm col-form-label">Nama</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama" name="nama" required>
+                            <input type="text" class="form-control" id="nama" name="nama" value="{{ $santri->nama }}" required>
                             <div class="invalid-feedback" id="error-nama"></div>
                         </div>
                     </div>
                     <div class="form-group row">
                         <label for="nama_orangtua" class="col-sm col-form-label">Nama Orangtua</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="nama_orangtua" name="nama_orangtua" required>
+                            <input type="text" class="form-control" id="nama_orangtua" name="nama_orangtua" value="{{ $santri->nama_orangtua }}" required>
                             <div class="invalid-feedback" id="error-nama_orangtua"></div>
                         </div>
                     </div>
@@ -38,42 +39,36 @@
                             <select id="rt" name="rt" class="form-control">
                                 <option selected>Pilih RT...</option>
                                 @for ($i = 1; $i <= 9; $i++)
-                                    <option>{{ str_pad($i, 2, '0', STR_PAD_LEFT) }}</option>
+                                    <option {{ $santri->rt == str_pad($i, 2, '0', STR_PAD_LEFT) ? 'selected' : '' }}>
+                                        {{ str_pad($i, 2, '0', STR_PAD_LEFT) }}
+                                    </option>
                                 @endfor
                             </select>
                         </div>
                     </div>
-
-                    <div class="form-group row">
-                        <label for="status" class="col-sm col-form-label">Status Santri</label>
-                        <div class="col-sm-9">
+                    
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="pesantren">Nama Pesantren</label>
+                            <input type="text" class="form-control" id="pesantren" name="pesantren" value="{{ $santri->pesantren }}" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="alamat">Alamat</label>
+                            <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $santri->alamat }}" required>
+                        </div>
+                        <div class="form-group col-md-3">
+                            <label for="status">Status Santri</label>
                             <select id="status" name="status" class="form-control">
-                                <option selected>Pilih...</option>
-                                <option>Aktif</option>
-                                <option>Lulus</option>
-                                <option>Tidak Aktif</option>
+                                <option {{ $santri->status == 'Aktif' ? 'selected' : '' }}>Aktif</option>
+                                <option {{ $santri->status == 'Lulus' ? 'selected' : '' }}>Lulus</option>
+                                <option {{ $santri->status == 'Tidak Aktif' ? 'selected' : '' }}>Tidak Aktif</option>
                             </select>
                         </div>
                     </div>
-
-                    {{-- INPUT MANUAL --}}
-                    <div class="form-row">
-                        <!-- Tambahkan Dropdown Provinsi dan Kota -->
-                        <div class="form-group col-md-6">
-                            <label for="pesantren" class=" col-form-label">Nama pesantren</label>
-                            <input type="text" class="form-control" id="pesantren" name="pesantren" placeholder="Nama Pesantren">
-                        </div>
-
-                        <div class="form-group col-md-4">
-                            <label for="alamat" class="col-form-label">Alamat</label>
-                            <input type="text" class="form-control" id="alamat" name="alamat" placeholder="alamat">
-                        </div>
-
-                    </div>
-
+                    
                     <div class="tombol">
-                        <button class="btn btn-info mr-3" type="button">Back</button>
-                        <button class="btn btn-primary" type="submit">Create</button>
+                        <a href="/dashboard/santri"  class="btn btn-primary" style="text-decoration: none;">Back</a>
+                        <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </form>
             </div>
@@ -85,13 +80,11 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-
-    // Handle form submit
-    document.getElementById('createSantriForm').addEventListener('submit', function(event) {
+    document.getElementById('editSantriForm').addEventListener('submit', function(event) {
         event.preventDefault();
         let formData = new FormData(this);
 
-        fetch('{{ route('santri.store') }}', {
+        fetch('{{ route('santri.update', $santri->id) }}', {
             method: 'POST',
             headers: {
                 'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
@@ -105,9 +98,9 @@
                     icon: 'success',
                     title: 'Berhasil!',
                     text: data.success,
-                    confirmButtonText: 'Tambah Lagi'
+                    confirmButtonText: 'Oke'
                 }).then(() => {
-                    this.reset(); // Reset form setelah berhasil ditambahkan
+                    window.location.href = '{{ route('santri.index') }}';
                 });
             } else {
                 // Tampilkan error validasi
@@ -117,7 +110,7 @@
                 Swal.fire({
                     icon: 'error',
                     title: 'Gagal!',
-                    text: 'Terjadi kesalahan saat menambah data.'
+                    text: 'Terjadi kesalahan saat mengupdate data.'
                 });
             }
         })

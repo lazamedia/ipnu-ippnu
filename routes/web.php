@@ -23,6 +23,7 @@ Route::get('/', function () {
         "active" => "home"
     ]);
 });
+
 Route::get('/test', function () {
     return view('test', [
         "title" => "test",
@@ -98,6 +99,7 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin,super_admin'])->group
     Route::post('dashboard/pengurus/bulk-delete', [PengurusController::class, 'bulkDelete'])->name('pengurus.bulk-delete');
     
     Route::resource('dashboard/santri', SantriController::class);
+    Route::post('dashboard/santri/bulk-delete', [SantriController::class, 'bulkDelete'])->name('santri.bulk-delete');
         
     Route::resource('dashboard/event', EventController::class);
     Route::post('/dashboard/event/bulk-delete', [EventController::class, 'bulkDelete'])->name('dashboard.event.bulk-delete');

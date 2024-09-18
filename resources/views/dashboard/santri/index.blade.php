@@ -2,79 +2,76 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset ('assets/css/customtabel.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/css/customtabel.css') }}">
 
-<div class="row">
-    <div class="col-12">
-        <div class="card pt-4">
-            <div class="card-header set-tabel">
-                <div class="h-header">
-                    <h4>Data Santri Pujut</h4>
-                </div>
-                <div class="d-flex flex-wrap align-items-center justify-content-end">
-                    <div class="btn-actions d-flex mr-3">
-                        <a href="{{ route('santri.create') }}" class="btn btn-primary mr-2">
-                            <i class="fas fa-plus"></i> Create
-                        </a>
-                        <button id="bulk-delete-btn" class="btn btn-danger mr-2" disabled>
-                            <i class="fas fa-trash"></i> Hapus Terpilih
+<div class="card pt-4">
+    <div class="card-header set-tabel">
+        <div class="h-header">
+            <h4>Data Santri Pujut</h4>
+        </div>
+        <div class="d-flex flex-wrap align-items-center justify-content-end">
+            <div class="btn-actions d-flex mr-3">
+                <a href="{{ route('santri.create') }}" class="btn btn-primary mr-2">
+                    <i class="fas fa-plus"></i> Create
+                </a>
+                <button id="bulk-delete-btn" class="btn btn-danger mr-2" disabled>
+                    <i class="fas fa-trash"></i> Hapus Terpilih
+                </button>
+            </div>
+            <div class="search-box">
+                <div class="input-group">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Name">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-search"></i>
                         </button>
-                    </div>
-                    <div class="search-box">
-                        <div class="input-group">
-                            <input type="text" id="searchInput" class="form-control" placeholder="Search by Name">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary">
-                                    <i class="fas fa-search"></i>
-                                </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <div class="box-tabel">
-                        <table class="table table-striped" id="pengurusTable">
-                            <thead>
-                                <tr>
-                                    <th><input type="checkbox" id="select-all"></th>
-                                    <th>No</th>
-                                    <th>Nama Lengkap</th>
-                                    <th>Nama Pesantren</th>
-                                    <th>Alamat Pesantren</th>
-                                    <th>RT/RW</th>
-                                    <th>Nama Orangtua</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                                <tr>
-                                    <td><input type="checkbox" class="checkbox-pengurus" value=""></td>
-                                    <td>01</td>
-                                    <td>Lazuardi Mandegar</td>
-                                    <td>Ponpes Roudlotul Mubtadiin</td>
-                                    <td>Jepara</td>
-                                    <td>Rt.02</td>
-                                    <td>Tri Budiyanto</td>
-                                    <td><div class="badge badge-success badge-shadow">Lulus</div></td>
-                                    <td>
-                                        <a href="" class="btn btn-warning btn-sm">Edit</a>
-                                        <form action="" method="POST" class="delete-form d-inline">
-                                            
-                                            <button type="button" class="btn btn-danger btn-sm delete-btn">Delete</button>
-                                        </form>
-                                    </td>
-                                </tr>
-                                
-                            </tbody>
-                        </table>
-                        
-                    </div>
-                </div>
-                
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <div class="box-tabel">
+                <table class="table table-striped" id="santriTable">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" id="select-all"></th>
+                            <th>No</th>
+                            <th>Nama Lengkap</th>
+                            <th>Nama Pesantren</th>
+                            <th>Kabupaten</th>
+                            <th>RT/RW</th>
+                            <th>Nama Orangtua</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($santris as $santri)
+                            <tr>
+                                <td><input type="checkbox" class="checkbox-santri" value="{{ $santri->id }}"></td>
+                                <td>{{ $loop->iteration }}</td>
+                                <td>{{ $santri->nama }}</td>
+                                <td>{{ $santri->pesantren }}</td>
+                                <td>{{ $santri->alamat }}</td>
+                                <td>{{ $santri->rt }}</td>
+                                <td>{{ $santri->nama_orangtua }}</td>
+                                <td>
+                                    <div class="badge 
+                                        {{ $santri->status == 'Aktif' ? 'badge-primary' : ($santri->status == 'Lulus' ? 'badge-success' : 'badge-danger') }} 
+                                        badge-shadow">
+                                        {{ $santri->status }}
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="{{ route('santri.edit', $santri->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                    <button type="button" class="btn btn-danger btn-sm delete-btn" data-id="{{ $santri->id }}">Delete</button>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -96,27 +93,27 @@
     // Memilih atau membatalkan semua checkbox
     document.getElementById('select-all').addEventListener('change', function() {
         const isChecked = this.checked;
-        document.querySelectorAll('.checkbox-pengurus').forEach(checkbox => {
+        document.querySelectorAll('.checkbox-santri').forEach(checkbox => {
             checkbox.checked = isChecked;
         });
         toggleBulkDeleteButton();
     });
 
     // Aktifkan tombol hapus massal jika ada yang dipilih
-    document.querySelectorAll('.checkbox-pengurus').forEach(checkbox => {
+    document.querySelectorAll('.checkbox-santri').forEach(checkbox => {
         checkbox.addEventListener('change', function() {
             toggleBulkDeleteButton();
         });
     });
 
     function toggleBulkDeleteButton() {
-        const selected = document.querySelectorAll('.checkbox-pengurus:checked').length > 0;
+        const selected = document.querySelectorAll('.checkbox-santri:checked').length > 0;
         document.getElementById('bulk-delete-btn').disabled = !selected;
     }
 
     // Konfirmasi hapus massal
     document.getElementById('bulk-delete-btn').addEventListener('click', function() {
-        const selectedIds = Array.from(document.querySelectorAll('.checkbox-pengurus:checked')).map(cb => cb.value);
+        const selectedIds = Array.from(document.querySelectorAll('.checkbox-santri:checked')).map(cb => cb.value);
 
         Swal.fire({
             title: 'Apakah Anda yakin?',
@@ -130,7 +127,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // Kirim data ke server untuk dihapus
-                fetch('{{ route('pengurus.bulk-delete') }}', {
+                fetch('{{ route('santri.bulk-delete') }}', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -176,7 +173,7 @@
     // Script untuk filter pencarian nama pada tabel
     document.getElementById('searchInput').addEventListener('keyup', function() {
         const searchValue = this.value.toLowerCase();
-        const rows = document.querySelectorAll('#pengurusTable tr');
+        const rows = document.querySelectorAll('#santriTable tr');
         
         rows.forEach((row, index) => {
             if (index === 0) return; // Skip the header row
