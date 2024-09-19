@@ -242,7 +242,7 @@
       padding: 20px;
       gap: 20px; 
       color: #777777;
-    }
+    } 
 </style>
 
 <div class="judul-box">
