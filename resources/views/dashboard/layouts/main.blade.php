@@ -16,6 +16,9 @@
   <link rel="stylesheet" href="{{ asset('assets/bundles/jquery-selectric/selectric.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/bundles/bootstrap-timepicker/css/bootstrap-timepicker.min.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
+  <link rel="stylesheet" href="{{ asset ('assets/bundles/summernote/summernote-bs4.css') }}">
+
+
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
@@ -95,6 +98,8 @@
   <script src="{{ asset('assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
   <script src="{{ asset('assets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
   
+  <script src="{{ asset ('assets/bundles/summernote/summernote-bs4.js') }}"></script>
+  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/datatables.js') }}"></script>
 <script src="{{ asset("assets/js/page/forms-advanced-forms.js") }}"></script>

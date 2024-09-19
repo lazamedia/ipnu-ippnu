@@ -158,15 +158,15 @@
                         </div>
                     </div>
 
-                    <!-- Divisi Acara -->
-                    <div class="form-group row">
+                     <!-- Divisi Acara -->
+                     <div class="form-group row">
                         <label for="divisiAcara" class="col-sm-3 col-form-label">Divisi Acara</label>
                         <div class="col-sm-9">
                             <div class="tag-input-container" id="divisiAcaraContainer">
                                 <select class="form-control" id="divisiAcaraSelect">
                                     <option value="">Pilih Nama Pengurus</option>
                                     @foreach($penguruses as $pengurus)
-                                        <option value="{{ $pengurus->nama_lengkap }}" {{ in_array($pengurus->nama_lengkap, explode(', ', $event->divisi_acara)) ? 'selected' : '' }}>{{ $pengurus->nama_lengkap }}</option>
+                                        <option value="{{ $pengurus->nama_lengkap }}">{{ $pengurus->nama_lengkap }}</option>
                                     @endforeach
                                     <option value="manual">Input Manual</option>
                                 </select>

@@ -37,7 +37,7 @@
                 </li>
                 @endif
                 <li class="nav-item">
-                    <a class="nav-link {{ ($active === 'artikel') ? 'active' : '' }}" href="/artikel">Artikel</a>
+                    <a class="nav-link {{ ($active === 'posts') ? 'active' : '' }}" href="/posts">Artikel</a>
                 </li>  
                   
                 <li class="nav-item">

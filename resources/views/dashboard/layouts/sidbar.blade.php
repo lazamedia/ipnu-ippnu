@@ -51,15 +51,15 @@
             </li>
         
           <li class="menu-header">Media</li>
-          <li class="{{ Request::is('media/artikel') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('media/artikel') }}">
+          <li class="{{ Request::is('dashboard/posts') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('dashboard/posts') }}">
                   <i data-feather="folder"></i>
                   <span>Artikel</span>
               </a>
           </li>
 
-          <li class="{{ Request::is('media/kategori') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('media/kategori') }}">
+          <li class="{{ Request::is('dashboard/categories') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('dashboard/categories') }}">
                   <i data-feather="bookmark"></i>
                   <span>Kategori</span>
               </a>

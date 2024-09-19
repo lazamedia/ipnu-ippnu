@@ -3,389 +3,283 @@
 @section('container')
 
 <style>
-    body{
-        background-color: #f3f3f3;
+  /* HEADER */
+  @media (max-width: 768px) {
+    .artikel{
+      padding: 30px;
+      padding-right: 0px;
+      padding-left: 0px;
     }
-    .card-body{
-        padding: 0px;
-        margin: 20px 0px;
+  }
+  .artikel{
+    padding: 30px;
+  }
+  .artikel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    min-height: 300px;
+    background-color: #005d92;
+    padding: 20px;
+  }
+
+  .box-judul {
+    flex-basis: 45%; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 80px;
+  }
+
+  .artikel-kanan {
+    text-align: left;
+  }
+
+  .artikel-kanan h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: fadeInLeft 1s ease;
+  }
+
+  .artikel-kanan p {
+    color: white;
+    font-size: 1rem;
+    animation: fadeInLeft 1.2s ease; 
+  }
+
+  .input-cari {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease;
+  }
+
+  .input-cari input {
+    margin-right: 10px;
+  }
+
+  /* Animasi Fade In */
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
     }
-    .row {
-        display: flex;
-        justify-content: space-between;
-        padding: 30px;
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
-    @media (max-width: 768px) {
-        .row{
-            padding: 10px;
-        }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+ 
+  @media (max-width: 768px) {
+    .artikel-header {
+      flex-direction: column; 
+      justify-content: center;
     }
 
-    /* Style untuk dua kolom utama */
-    .main-event, .other-event {
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.322);
-        border-radius: 8px;
-        padding: 20px;
+    .box-judul {
+      flex-basis: 100%; 
+      margin-bottom: 20px; 
+      padding: 0;
     }
 
-    .main-event {
-        flex: 0 0 70%;
-        margin-right: 20px;
+    .input-cari {
+      justify-content: center;
+    }
+  }
+  /* END --- */
+
+  /* BOX ARTIKEL UTAMA */
+  /* Gaya untuk artikel utama */
+  .artikel-utama{
+    background-color: #ffffff;
+    width: 100%;
+    min-height: 400px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Perbaiki shadow untuk kesan 3D */
+    margin-top: -6%;
+    border-radius: 20px; 
+    display: flex;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk hover */
+  }
+
+  .artikel-utama:hover {
+    transform: translateY(-5px); /* Efek hover untuk menarik perhatian */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Konten kiri artikel */
+  .utama-kiri {
+    padding: 20px;
+    justify-content: center;
+    width: 70%;
+    background-color: #f0f0f0; /* Ganti warna background untuk kontras */
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+
+  .utama-kiri h4 {
+    font-size: 1.5rem; /* Ukuran font yang lebih besar dan readable */
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333;
+  }
+
+  .utama-kiri p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 20px;
+  }
+
+  .utama-kiri a {
+    font-size: 1rem;
+    color: #005d92;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+
+  .utama-kiri a:hover {
+    color: #ff6600; /* Efek hover untuk link */
+  }
+
+  .img-utama{
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+
+  /* Konten kanan artikel */
+  .utama-kanan {
+    background-color: #005d92;
+    width: 30%;
+    padding: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+  }
+
+  .utama-kanan h5 {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+  }
+
+  .utama-kanan p {
+    font-size: 0.9rem;
+    color: #ddd;
+  }
+
+  .box-kecil {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+
+  .box-kecil img {
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+
+  .box-kecil img:hover {
+    transform: scale(1.1); /* Efek hover pada gambar kecil */
+  }
+
+  .conten-box-kecil a {
+    color: #ffcc00; 
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .conten-box-kecil a:hover {
+    color: #ffffff; /* Efek hover untuk link kecil */
+  }
+
+  /* Responsivitas */
+  @media (max-width: 768px) {
+    .artikel-utama {
+      flex-direction: column;
     }
 
-    .event-details{
-        display: flex;
-        justify-content: space-between;
-        margin: 20px;
-        font-size: 14pt;
-        font-weight: 600;
-        color: #317671; 
+    .utama-kiri, .utama-kanan {
+      width: 100%;
+      border-radius: 20px;
     }
 
-    .other-event {
-        flex: 0 0 28%;
+    .utama-kiri {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 20px;
     }
 
-    .event-banner {
-        width: 100%;        /* Gambar akan mengambil seluruh lebar box */
-        height: auto;       /* Menjaga rasio gambar */
-        max-width: 100%;    /* Gambar tidak akan melebihi ukuran kontainer */
-        border-radius: 8px; /* Opsional: memberikan sudut membulat */
+    .utama-kanan {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: 0;
     }
+  }
 
-    /* Tabel untuk jadwal kegiatan */
-    .schedule-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    .schedule-table th, .schedule-table td {
-        padding: 10px;
-        border: 1px solid #7e7e7e;
-        text-align: left;
-    }
-
-    .schedule-table th {
-        background-color: #317671;
-        color: white;
-    }
-
-    /* Tabel anggaran */
-    .budget-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
-    }
-
-    .budget-table th, .budget-table td {
-        padding: 10px;
-        border: 1px solid #7e7e7e;
-        text-align: left;
-    }
-
-    .budget-table th {
-        background-color: #317671;
-        color: white;
-    }
-
-    .budget-table td {
-        font-size: 12pt;
-    }
-
-    /* Responsif */
-    @media (max-width: 768px) {
-        .row {
-            flex-direction: column;
-        }
-
-        .main-event, .other-event {
-            flex: 100%;
-            margin-bottom: 20px;
-        }
-    }
-    .judul-event {
-        width: 100%;
-        padding: 20px 50px;
-        background-color: #ffffff;
-        box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1); /* Shadow hanya di bawah */
-        color: #317671;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-wrap: wrap;
-    }
-
-    /* Style Tamu undangan */
-    .tamu-container {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .box-tamu {
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        border: 1px solid #317671;
-        padding: 10px 10px 3px 10px;
-        align-items: center;
-        justify-content: center;
-        align-content: center;
-        border-radius: 8px;
-        margin-bottom: 20px;
-        transition: all 0.3s ease;
-        text-align: center;
-    }
-
-    .box-tamu h5 {
-        color: #317671;
-        font-size: 12pt;
-    }
-
-    /* Hover effect */
-    .box-tamu:hover {
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    /* Responsiveness */
-    @media (min-width: 768px) {
-        .box-tamu {
-            max-width: 48%;
-            margin: 10px auto;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .box-tamu {
-            max-width: 30%;
-        }
-    }
-
-    .tamu-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 20px;
-    }
-
-
-    /* Style untuk Divisi */
-    .divisi-container {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        gap: 20px;
-    }
-
-    .divisi-box {
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        border: 1px solid #d1d1d1;
-        border-radius: 8px;
-        width: 100%;
-        max-width: 300px; /* Ukuran maksimal per divisi box */
-        margin-bottom: 20px;
-    }
-
-    .divisi-box h4 {
-        color: #317671;
-        font-size: 16pt;
-        margin-bottom: 10px;
-    }
-
-    .divisi-box p {
-        margin: 5px 0;
-        font-size: 12pt;
-    }
-
-    @media (min-width: 768px) {
-        .divisi-box {
-            width: 48%;
-        }
-    }
-
-    @media (min-width: 1024px) {
-        .divisi-box {
-            width: 30%;
-        }
-    }
-
-    .event-img{
-        width: 200px;
-        height: 25px;
-        margin-bottom: 10px;
-    }
-
-/* CSS khusus untuk menyelaraskan teks sebelum dan sesudah titik dua */
-.panitia-list {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .panitia-item {
-        display: flex;
-        justify-content: space-between;
-        padding-bottom: 5px; /* Jarak antar item */
-        font-size: 13pt;    
-        font-weight: 700;
-        color: #627271;
-        padding-left: 20px;
-    }
-
-    .panitia-label {
-        flex: 0 0 150px; /* Lebar tetap untuk label sebelum titik dua */
-    }
-
-    .panitia-value {
-        flex: 1;
-    }
+  /* END --- */
 
 </style>
 
-<div class="judul-event">
-    <h4>Event Buka Bersama</h4>
-</div>
+<section class="artikel-header">
 
-<div class="row">
-    <!-- Box utama untuk event -->
-    <div class="main-event">
-        
+  <div class="artikel-kanan box-judul">
+    <h3>Artikel Terbaru</h3>
+    <p>Semua Postingan Terbaru</p> <!-- Deskripsi di bawah judul -->
+  </div>
 
-        <!-- Banner kegiatan -->
-        <img src="img/s-2.jpg" alt="Banner Kegiatan" class="event-banner" >
-        
-        <!-- Tanggal, Anggaran, dan Lokasi -->
-        <div class="event-details">
-            <p><i class="bi bi-calendar"></i>  20-10-2022</p>
-            {{-- <p><i class="bi bi-wallet2"></i>  Rp. 100.000</p> --}}
-            <p><i class="bi bi-geo-alt"></i>  MITA SELATAN PUJUT 01</p>
-        </div>
+  <div class="artikel-kiri box-judul">
+    <div class="input-group input-cari">
+      <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
+      <button class="btn btn-primary" type="submit">Cari</button>
+    </div>
+  </div>
 
-        <div class="ketua">
-            <img src="img/label-ketupat.png" alt="" class="event-img">
-                <div class="panitia-list">
-                <div class="panitia-item">
-                    <span class="panitia-label">Ketua</span>
-                    <span class="panitia-value">: Lazuardi Mandegar</span>
-                </div>
-                <div class="panitia-item">
-                    <span class="panitia-label">Wakil</span>
-                    <span class="panitia-value">: Agus Setiawan</span>
-                </div>
-                <div class="panitia-item">
-                    <span class="panitia-label">Sekretaris</span>
-                    <span class="panitia-value">: Agus Setiawan</span>
-                </div>
-                <div class="panitia-item">
-                    <span class="panitia-label">Bendahara</span>
-                    <span class="panitia-value">: Agus Setiawan</span>
-                </div>
-            </div>
-        </div>
-        <!-- Tamu Undangan -->
-        <div class="card-body">
-            <img src="img/label-tamu.png" alt="" class="event-img">
-            <div class="tamu-container">
-                <div class="box-tamu">
-                    <h5>PAC IPNU IPPNU TERSONO</h5>
-                </div>
-                <div class="box-tamu">
-                    <h5>Banom NU Pujut</h5>
-                </div>
-                <div class="box-tamu">
-                    <h5>Kepala Desa Pujut</h5>
-                </div>
-            </div>
-        </div>
+</section>
 
-        <!-- Susunan Panitia -->
-        <div class="card-body">
-            <img src="img/label-panitia.png" alt="" class="event-img">
-            <div class="divisi-container">
-                <div class="divisi-box">
-                    <h4>Divisi Acara</h4>
-                    <p>- Lazuardi Mandegar</p>
-                    <p>- Agus Setiawan</p>
-                </div>
-                <div class="divisi-box">
-                    <h4>Divisi Humas</h4>
-                    <p>- Lazuardi Mandegar</p>
-                    <p>- Agus Setiawan</p>
-                </div>
-            </div>
+<div class="artikel">
+    <div class="artikel-utama">
+      <div class="utama-kiri">
+        <img src="img/s-1.jpg" class="img-utama" alt="">
+        <div class="kategori"><p>IPNU-IPPNU</p></div>
+        <h4>Judul</h4>
+        <p>Deskripsi</p>
+        <a href="">Reamore</a>
+      </div>
+      <div class="utama-kanan">
+        <div class="box-kecil">
+          <img src="img/s-1.jpg" style="width: 100px; height:auto;" alt="">
+          <div class="conten-box-kecil">
+            <h5>Judul</h5>
+            <p>Kategori</p>
+            <p>deskripsi</p>
+            <a href="">Readmore..</a>
+          </div>
         </div>
-
-        <!-- Jadwal Kegiatan -->
-        <div class="card-body">
-            <img src="img/label-acara.png" alt="" class="event-img">
-            <table class="schedule-table">
-                <thead>
-                    <tr>
-                        <th>Jam</th>
-                        <th>Nama Kegiatan</th>
-                        <th>Penanggung Jawab</th>
-                        <th>Keterangan</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>08:00 - 09:00</td>
-                        <td>Pembukaan</td>
-                        <td>Lazuardi Mandegar</td>
-                        <td>Upacara Pembukaan Acara</td>
-                    </tr>
-                    <tr>
-                        <td>09:00 - 10:00</td>
-                        <td>Sesi 1: Pengenalan</td>
-                        <td>Agus Setiawan</td>
-                        <td>Presentasi tentang acara</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <!-- Deskripsi Kegiatan -->
-        <div class="card-body">
-            <img src="img/label-deskripsi.png" alt="" class="event-img">
-            <p>Lorem ipsum dolor sit amet...</p>
-        </div>
-
-        <!-- Tabel Anggaran -->
-        <div class="card-body">
-            <img src="img/label-anggaran.png" alt="" class="event-img">
-            <table class="budget-table">
-                <thead>
-                    <tr>
-                        <th>Sub Anggaran</th>
-                        <th>Item</th>
-                        <th>Jumlah</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Buah-buahan</td>
-                        <td>Apel, Jeruk</td>
-                        <td>Rp. 200.000</td>
-                    </tr>
-                    <tr>
-                        <td>Perlengkapan</td>
-                        <td>Kursi, Meja</td>
-                        <td>Rp. 300.000</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+      </div>
     </div>
 
-    <!-- Box untuk event lainnya -->
-    <div class="other-event">
-        <h4>Event Lainnya</h4>
-        <ul>
-            <li>Event 1</li>
-            <li>Event 2</li>
-            <li>Event 3</li>
-        </ul>
-    </div>
+
+
+
+
 </div>
+
+
+
 
 @endsection

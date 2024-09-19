@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\Storage; // Tambahkan ini untuk menggunakan Storage
 
 class User extends Authenticatable
 {
@@ -18,7 +19,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'foto',
+        'foto', // gambar profil pengguna
         'username',
         'email',
         'password',
@@ -41,6 +42,29 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password' => 'hashed', // Laravel 9 hashing password otomatis
     ];
+
+    /**
+     * Relasi: User memiliki banyak Post
+     */
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
+    /**
+     * Menghapus gambar profil saat user dihapus
+     */
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::deleting(function ($user) {
+            // Hapus gambar profil dari storage jika ada
+            if ($user->foto) {
+                Storage::delete('public/' . $user->foto);
+            }
+        });
+    }
 }

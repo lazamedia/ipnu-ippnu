@@ -100,7 +100,7 @@ class EventController extends Controller
     $penguruses = Pengurus::all(); // Mengambil data pengurus
 
     // Mengirimkan data event dan pengurus ke view edit
-    return view('dashboard.event.edit', compact('event', 'penguruses'));
+    return view('dashboard.event.edit', compact('event', 'penguruses')); 
 }
 
 

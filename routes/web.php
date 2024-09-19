@@ -1,10 +1,14 @@
 <?php
 
+use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PengurusController;
+use App\Http\Controllers\PostControler;
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WhatsAppBotController;
@@ -106,9 +110,24 @@ Route::middleware(['auth', RoleMiddleware::class . ':admin,super_admin'])->group
 
     Route::post('/dashboard/auth/bulk-delete', [UserController::class, 'bulkDelete'])->name('auth.bulk-delete');
     Route::resource('/dashboard/auth', UserController::class);
+
+    route::resource('dashboard/artikel' , ArtikelController::class);
     
 });
 
+Route::get('/posts', [PostControler::class, 'index']);
+Route::get('posts/{post:slug}', [PostControler::class, 'show']);
+Route::resource('/dashboard/posts', DashboardPostController::class )->middleware('auth');
+Route::get('/dashboard/posts/checkSlug', [ DashboardPostController::class, 'checkSlug'])->middleware('auth');
+Route::post('dashboard/posts/bulk-delete', [DashboardPostController::class, 'bulkDelete'])->name('posts.bulk-delete');
+
+
+Route::post('dashboard/categories/bulk-delete', [AdminCategoryController::class, 'bulkDelete'])->name('category.bulk-delete');
+
+Route::get('/dashboard/categories/checkSlug', [ AdminCategoryController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/categories', AdminCategoryController::class)->middleware('auth');
+Route::put('dashboard/categories/{category}', [AdminCategoryController::class, 'update'])->name('categories.update');
+Route::delete('dashboard/categories}', [AdminCategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 

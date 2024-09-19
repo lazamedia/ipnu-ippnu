@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -17,6 +18,22 @@ class DatabaseSeeder extends Seeder
         // Panggil seeder untuk user dan role
         $this->call(UserRoleSeeder::class);
 
-        
+        Category::create([
+            'name' => 'IPNU-IPPNU',
+            'slug' => 'ipnu-ippnu'
+           
+        ]);
+
+        Category::create([
+           'name' => 'Event',
+           'slug' => 'event-ipnu'
+          
+       ]);
+
+        Category::create([
+            'name' => 'Ramadhan',
+            'slug' => 'ramadhans'
+           
+        ]);
     }
 }
