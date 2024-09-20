@@ -3,6 +3,9 @@
 @section('container')
 
 <style>
+    body{
+        background-color: #e0dcdc;
+    }
     .article-box {
         margin-top: 50px;
         background-color: #ffffff;
@@ -28,15 +31,19 @@
     }
 
     .back-btn {
-        background-color: #007bff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 50px;
+        background-color: #ffffff;
+        border: 1px solid #0056b3;
+        color: #046785;
+        padding: 6px 20px;
+        border-radius: 30px;
         transition: background-color 0.3s;
     }
 
     .back-btn:hover {
-        background-color: #0056b3;
+        border: 1px solid #00a7b3;
+        background-color: #ffffff;
+        color: #00a7b3;
+        font-weight: 600;
     }
 
     .sidebar-box h5 {
@@ -54,31 +61,32 @@
         padding: 20px;
         border-radius: 10px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        align-self: flex-start; 
     }
 
     .sidebar-title {
-        font-size: 1.5rem;
-        color: #333;
+        font-size: 15pt;
+        color: #006d8b;
         margin-bottom: 15px;
     }
 
     .latest-post {
-        margin-bottom: 15px;
+        margin-bottom: -5px;
     }
 
     .latest-post-link {
-        font-size: 1.2rem;
-        color: #007bff;
+        font-size: 1rem;
+        color: #001c3a;
         transition: color 0.3s;
     }
 
     .latest-post-link:hover {
-        color: #0056b3;
+        color: #007786;
     }
 
     .category-link {
-        font-size: 1.2rem;
-        color: #007bff;
+        font-size: 1rem;
+        color: #686868;
         transition: color 0.3s;
     }
 
@@ -139,7 +147,7 @@
         <div class="col-md-3 sidebar-box">
             <!-- Latest Posts Section -->
             <div class="mb-4">
-                <h3 class="sidebar-title">Postingan Terbaru</h3>
+                <h4 class="sidebar-title mb-3">Postingan Terbaru</h4>
                 @foreach($latestPosts as $latestPost)
                     <div class="latest-post">
                         <a href="/posts/{{ $latestPost->slug }}" class="text-decoration-none latest-post-link">
@@ -153,12 +161,12 @@
             
             <!-- Categories Section -->
             <div>
-                <h3 class="sidebar-title">Kategori</h3>
+                <h4 class="sidebar-title">Kategori</h4>
                 <ul class="list-unstyled">
                     @foreach($categories as $category)
                         <li>
                             <a href="/posts?category={{ $category->slug }}" class="text-decoration-none category-link">{{ $category->name }}</a>
-                        </li>
+                        </li>                       
                     @endforeach
                 </ul>
             </div>

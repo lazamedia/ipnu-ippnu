@@ -59,7 +59,7 @@
         <h4>Edit Artikel</h4>
     </div>
     <div class="card-body">
-        <form id="editForm" method="post" action="/posts/{{ $post->id }}" enctype="multipart/form-data">
+        <form id="editForm" action="{{ route('posts.update', $post->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT') <!-- Menambahkan method PUT untuk form edit -->
 
