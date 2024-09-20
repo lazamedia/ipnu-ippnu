@@ -18,7 +18,10 @@
   <link rel="stylesheet" href="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}">
   <link rel="stylesheet" href="{{ asset ('assets/bundles/summernote/summernote-bs4.css') }}">
 
-
+  <!-- Trix Editor -->
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
+  <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
+  
   <!-- Template CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
@@ -97,9 +100,7 @@
   <script src="{{ asset('assets/bundles/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
   <script src="{{ asset('assets/bundles/select2/dist/js/select2.full.min.js') }}"></script>
   <script src="{{ asset('assets/bundles/jquery-selectric/jquery.selectric.min.js') }}"></script>
-  
   <script src="{{ asset ('assets/bundles/summernote/summernote-bs4.js') }}"></script>
-  <script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/datatables.js') }}"></script>
 <script src="{{ asset("assets/js/page/forms-advanced-forms.js") }}"></script>

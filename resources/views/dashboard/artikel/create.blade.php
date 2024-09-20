@@ -71,9 +71,8 @@
             </div>
         
             <div class="mb-3">
-                <label for="body" class="form-label">Body</label>
-                <input id="body" type="hidden" name="body" value="{{ old('body') }}">
-                <trix-editor input="body"></trix-editor>
+                <label for="body" class="form-label">Body Artikel</label>
+                <textarea input="body"  name="body" value="{{ old('body') }}" id="body"></textarea>
                 @error('body')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
@@ -86,7 +85,10 @@
     </div>
 </div>
 
+<script src="{{ asset('assets/ckeditor/ckeditor.js') }}"></script>
+
 <script>
+    CKEDITOR.replace('body');
     const title = document.querySelector ('#title');
     const title = document.querySelector ('#slug');
 
