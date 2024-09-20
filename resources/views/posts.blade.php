@@ -243,9 +243,140 @@
       gap: 20px; 
       color: #777777;
     } 
-</style>
 
-<div class="judul-box">
+     /* HEADER */
+  @media (max-width: 768px) {
+    .artikel{
+      padding: 0px;
+      padding-right: 0px;
+      padding-left: 0px;
+    }
+  }
+  .artikel{
+    padding: 30px;
+  }
+  .artikel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; 
+    min-height: 300px;
+    background-color: #317671;
+    padding: 20px;
+  }
+
+  .box-judul {
+    flex-basis: 45%; 
+    display: flex;
+    flex-direction: column; 
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 80px;
+  }
+
+  .artikel-kanan {
+    text-align: left;
+  }
+
+  .artikel-kanan h3 {
+    color: white;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    animation: fadeInLeft 1s ease;
+  }
+
+  .artikel-kanan p {
+    color: white;
+    font-size: 1rem;
+    animation: fadeInLeft 1.2s ease; 
+  }
+
+  .input-cari {
+    display: flex;
+    width: 100%;
+    min-width: 400px;
+    justify-content: center;
+    align-items: center;
+    animation: fadeInRight 1s ease;
+  }
+
+  .input-cari input {
+    margin-right: 10px;
+  }
+
+  /* Animasi Fade In */
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(100px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+ 
+  @media (max-width: 768px) {
+    .artikel-header {
+      flex-direction: column; 
+      justify-content: center;
+      text-align: center; 
+    }
+
+    .box-judul {
+      flex-basis: 100%; 
+      margin-bottom: 20px; 
+      padding: 0;
+      align-items: center;
+    }
+
+    .input-cari {
+      justify-content: center;
+      min-width: 350px;
+      width: 100%;
+    }
+  }
+  /* END --- */
+</style>
+<section class="artikel-header">
+
+    <div class="artikel-kanan box-judul">
+      <h3>{{ $title }}</h3>
+      <p>Tim media IPNU - IPPNU</p> <!-- Deskripsi di bawah judul -->
+    </div>
+  
+    <div class="artikel-kiri box-judul">
+        <div class="col-md-12">
+        <form action="/posts">
+            @if (request('category'))
+                <input type="hidden" name="category" value="{{ request('category') }}">
+            @endif
+
+            @if (request('author'))
+                <input type="hidden" name="author" value="{{ request('author') }}">
+            @endif
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search.." name="search" value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">Cari</button>
+            </div>
+        </form>
+        </div>
+    </div>
+  
+  </section>
+{{-- <div class="judul-box">
         <div class="judulpost">
           <span class="text1">{{ $title }}</span>
       </div>
@@ -268,7 +399,7 @@
             </form>
         </div>
       </div>
-</div>
+</div> --}}
 
 {{-- <div class="artikel-utama">
         <!-- Artikel Utama Terbaru -->

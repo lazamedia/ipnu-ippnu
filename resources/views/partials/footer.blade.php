@@ -14,6 +14,10 @@
         margin-top:100px ;
     }
 
+    .footer p {
+        font-size: 11pt;
+    }
+
     .footer .footer-kiri, .footer .footer-tengah, .footer .footer-kanan {
         flex: 1;
         min-width: 250px;
@@ -30,7 +34,6 @@
     }
 
     .footer .footer-kiri p {
-        font-size: 11pt;
         line-height: 1.6;
         margin-bottom: 20px;
     }
@@ -123,6 +126,9 @@
     }
 
     @media (max-width: 768px) {
+        .footer p {
+            font-size: 10pt;
+        }
         .footer {
             flex-direction: column;
             text-align: center;

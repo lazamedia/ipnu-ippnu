@@ -6,7 +6,7 @@
   /* HEADER */
   @media (max-width: 768px) {
     .artikel{
-      padding: 30px;
+      padding: 0px;
       padding-right: 0px;
       padding-left: 0px;
     }
@@ -51,6 +51,7 @@
 
   .input-cari {
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     animation: fadeInRight 1s ease;
@@ -88,22 +89,25 @@
     .artikel-header {
       flex-direction: column; 
       justify-content: center;
+      text-align: center; 
     }
 
     .box-judul {
       flex-basis: 100%; 
       margin-bottom: 20px; 
       padding: 0;
+      align-items: center;
     }
 
     .input-cari {
       justify-content: center;
+      min-width: 350px;
+      width: 100%;
     }
   }
   /* END --- */
 
   /* BOX ARTIKEL UTAMA */
-  /* Gaya untuk artikel utama */
   .artikel-utama{
     background-color: #ffffff;
     width: 100%;
@@ -115,121 +119,6 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transisi untuk hover */
   }
 
-  .artikel-utama:hover {
-    transform: translateY(-5px); /* Efek hover untuk menarik perhatian */
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  }
-
-  /* Konten kiri artikel */
-  .utama-kiri {
-    padding: 20px;
-    justify-content: center;
-    width: 70%;
-    background-color: #f0f0f0; /* Ganti warna background untuk kontras */
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-
-  .utama-kiri h4 {
-    font-size: 1.5rem; /* Ukuran font yang lebih besar dan readable */
-    font-weight: bold;
-    margin-top: 10px;
-    color: #333;
-  }
-
-  .utama-kiri p {
-    font-size: 1rem;
-    color: #555;
-    margin-bottom: 20px;
-  }
-
-  .utama-kiri a {
-    font-size: 1rem;
-    color: #005d92;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-  }
-
-  .utama-kiri a:hover {
-    color: #ff6600; /* Efek hover untuk link */
-  }
-
-  .img-utama{
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-  }
-
-  /* Konten kanan artikel */
-  .utama-kanan {
-    background-color: #005d92;
-    width: 30%;
-    padding: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-  }
-
-  .utama-kanan h5 {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-  }
-
-  .utama-kanan p {
-    font-size: 0.9rem;
-    color: #ddd;
-  }
-
-  .box-kecil {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-
-  .box-kecil img {
-    border-radius: 10px;
-    transition: transform 0.3s ease;
-  }
-
-  .box-kecil img:hover {
-    transform: scale(1.1); /* Efek hover pada gambar kecil */
-  }
-
-  .conten-box-kecil a {
-    color: #ffcc00; 
-    font-size: 0.9rem;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-
-  .conten-box-kecil a:hover {
-    color: #ffffff; /* Efek hover untuk link kecil */
-  }
-
-  /* Responsivitas */
-  @media (max-width: 768px) {
-    .artikel-utama {
-      flex-direction: column;
-    }
-
-    .utama-kiri, .utama-kanan {
-      width: 100%;
-      border-radius: 20px;
-    }
-
-    .utama-kiri {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 20px;
-    }
-
-    .utama-kanan {
-      border-top-right-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-  }
 
   /* END --- */
 
@@ -251,32 +140,13 @@
 
 </section>
 
-<div class="artikel">
-    <div class="artikel-utama">
-      <div class="utama-kiri">
-        <img src="img/s-1.jpg" class="img-utama" alt="">
-        <div class="kategori"><p>IPNU-IPPNU</p></div>
-        <h4>Judul</h4>
-        <p>Deskripsi</p>
-        <a href="">Reamore</a>
-      </div>
-      <div class="utama-kanan">
-        <div class="box-kecil">
-          <img src="img/s-1.jpg" style="width: 100px; height:auto;" alt="">
-          <div class="conten-box-kecil">
-            <h5>Judul</h5>
-            <p>Kategori</p>
-            <p>deskripsi</p>
-            <a href="">Readmore..</a>
-          </div>
-        </div>
-      </div>
-    </div>
+<div class="row">
+   <div class="artikel-kiri">
 
-
-
-
-
+   </div>
+   <div class="artikel-kanan">
+    
+   </div>
 </div>
 
 
