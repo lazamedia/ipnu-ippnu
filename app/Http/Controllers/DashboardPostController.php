@@ -12,6 +12,12 @@ use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardPostController extends Controller
 {
+    public function getData()
+    {
+        $post = Post::all(); 
+        return response()->json($post); 
+    }
+
 
     // public function __construct()
     // {
@@ -20,9 +26,7 @@ class DashboardPostController extends Controller
     //     $this->middleware('role:admin')->only(['destroy']);
     // }
 
-    /**
-     * Display a listing of the resource.
-     */
+
     public function index()
     {
         

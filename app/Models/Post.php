@@ -52,6 +52,8 @@ class Post extends Model
      * Relasi ke model User (author)
      * Menggunakan kolom user_id sebagai foreign key
      */
+    
+
     public function author()
     {
         return $this->belongsTo(User::class, 'user_id');

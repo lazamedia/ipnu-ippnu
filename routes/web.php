@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminCategoryController;
+use App\Http\Controllers\ApiPengurusController;
 use App\Http\Controllers\ArtikelController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\EventController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PostControler;
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ViewAnggotaController;
 use App\Http\Controllers\WhatsAppBotController;
 use App\Http\Middleware\RoleMiddleware;
 
@@ -35,21 +37,7 @@ Route::get('/test', function () {
     ]);
 });
 
-// Route::middleware([RoleMiddleware::class . ':admin'])->group(function () {
-//     Route::get('/test', function () {
-//         return view('test', [
-//             "title" => "test",
-//             "active" => "test" 
-//         ]);
-//     });
-// });
 
-Route::get('/anggota', function () {
-    return view('anggota',[
-        "title" => "anggota",
-        "active" => "anggota"
-    ]);
-});
 
 Route::get('/profile', function () {
     return view('about',[
@@ -68,7 +56,7 @@ Route::get('/forgot-password', function () {
 
 
 // CONTROLLER DASHBOARD
-Route::middleware(['auth', RoleMiddleware::class . ':admin,super_admin'])->group(function () {
+Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin'])->group(function () {
 
     Route::get('/dashboard/test', function () {
         return view('dashboard.test', [
@@ -137,5 +125,9 @@ Route::post('/login', [LoginController::class, 'authenticate' ] );
 Route::post('/logout', [LoginController::class, 'logout' ] );
 
 
+Route::prefix('api')->group(function () {
+    Route::get('/pengurus', [ApiPengurusController::class, 'index']);
+});
 
 
+Route::get('anggota', [ViewAnggotaController::class, 'index']);

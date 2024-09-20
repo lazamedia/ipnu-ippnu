@@ -115,8 +115,8 @@
                             <div class="form-group">
                                 <label for="pelajar">Pelajar</label>
                                 <select class="form-control" name="pelajar" required>
-                                    <option value="ipnu">IPNU</option>
-                                    <option value="ippnu">IPPNU</option>
+                                    <option value="IPNU">IPNU</option>
+                                    <option value="IPPNU">IPPNU</option>
                                 </select>
                             </div>
                         </div>
