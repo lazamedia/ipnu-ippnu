@@ -10,8 +10,8 @@
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="no-referrer">
     <!-- PWA  -->
-    <meta name="theme-color" content="#6777ef"/>
-    <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
+    <meta name="theme-color" content="#317671"/>
+    <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">

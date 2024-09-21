@@ -6,10 +6,11 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#000000">
-  <meta name="mobile-web-app-capable" content="yes">
+   <!-- PWA  -->
+   <meta name="theme-color" content="#317671"/>
+   <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
+   <link rel="manifest" href="{{ asset('/manifest.json') }}">
+
 
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Dashboard</title>
@@ -95,7 +96,7 @@
 <!-- General JS Scripts -->
 <script src="{{ asset('assets/js/app.min.js') }}"></script>
 <!-- Template JS File -->
-<script src="{{ asset('assets/js/scripts.js') }}"></script>
+<script src="{{ asset('assets/js/scripts.js') }}"></script> 
 <!-- Custom JS File -->
 <script src="{{ asset('assets/js/custom.js') }}"></script>
 
@@ -118,6 +119,24 @@
 <!-- Page Specific JS File -->
 <script src="{{ asset('assets/js/page/datatables.js') }}"></script>
 <script src="{{ asset("assets/js/page/forms-advanced-forms.js") }}"></script>
+
+<script src="{{ asset('/sw.js') }}"></script>
+<script>
+   if ("serviceWorker" in navigator) {
+      // Register a service worker hosted at the root of the
+      // site using the default scope.
+      navigator.serviceWorker.register("/sw.js").then(
+      (registration) => {
+         console.log("Service worker registration succeeded:", registration);
+      },
+      (error) => {
+         console.error(`Service worker registration failed: ${error}`);
+      },
+    );
+  } else {
+     console.error("Service workers are not supported.");
+  }
+</script>
 
 </body>
 
