@@ -8,7 +8,7 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
    <!-- PWA  -->
    <meta name="theme-color" content="#317671"/>
-   <link rel="apple-touch-icon" href="{{ asset('img/logo.png') }}">
+   <link rel="apple-touch-icon" href="{{ asset('logo.png') }}">
    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
 
