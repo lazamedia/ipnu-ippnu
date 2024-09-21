@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6b5f6dd789959ae59f3f252fa383aea0",
+    "content-hash": "0ba7a8b502b967e647681fd23c3fd3b5",
     "packages": [
         {
             "name": "brick/math",
@@ -1199,6 +1199,63 @@
             "time": "2023-12-03T19:50:20+00:00"
         },
         {
+            "name": "ladumor/laravel-pwa",
+            "version": "v0.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shailesh-ladumor/laravel-pwa.git",
+                "reference": "1867899d6916803aef7ea02f489597555cc4ab02"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shailesh-ladumor/laravel-pwa/zipball/1867899d6916803aef7ea02f489597555cc4ab02",
+                "reference": "1867899d6916803aef7ea02f489597555cc4ab02",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": ">=5.4",
+                "php": ">=5.6"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "\\Ladumor\\LaravelPwa\\PWAServiceProvider"
+                    ],
+                    "aliases": {
+                        "LaravelPwa": "Ladumor\\LaravelPwa\\LaravelPwa"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ladumor\\LaravelPwa\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Shailesh Ladumor",
+                    "email": "shaileshmladumor@gmail.com"
+                }
+            ],
+            "description": "this package used for the make pwa website.",
+            "keywords": [
+                "laravel",
+                "laravel-pwa",
+                "php",
+                "pwa-laravel"
+            ],
+            "support": {
+                "issues": "https://github.com/shailesh-ladumor/laravel-pwa/issues",
+                "source": "https://github.com/shailesh-ladumor/laravel-pwa/tree/v0.0.4"
+            },
+            "time": "2023-09-02T13:09:30+00:00"
+        },
+        {
             "name": "laravel/framework",
             "version": "v11.23.5",
             "source": {
@@ -1588,6 +1645,75 @@
                 "source": "https://github.com/laravel/serializable-closure"
             },
             "time": "2024-08-02T07:48:17+00:00"
+        },
+        {
+            "name": "laravel/telescope",
+            "version": "v5.2.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/telescope.git",
+                "reference": "daaf95dee9fab2dd80f59b5f6611c6c0eff44878"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/telescope/zipball/daaf95dee9fab2dd80f59b5f6611c6c0eff44878",
+                "reference": "daaf95dee9fab2dd80f59b5f6611c6c0eff44878",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "laravel/framework": "^8.37|^9.0|^10.0|^11.0",
+                "php": "^8.0",
+                "symfony/console": "^5.3|^6.0|^7.0",
+                "symfony/var-dumper": "^5.0|^6.0|^7.0"
+            },
+            "require-dev": {
+                "ext-gd": "*",
+                "guzzlehttp/guzzle": "^6.0|^7.0",
+                "laravel/octane": "^1.4|^2.0|dev-develop",
+                "orchestra/testbench": "^6.40|^7.37|^8.17|^9.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^9.0|^10.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Telescope\\TelescopeServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Telescope\\": "src/",
+                    "Laravel\\Telescope\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                },
+                {
+                    "name": "Mohamed Said",
+                    "email": "mohamed@laravel.com"
+                }
+            ],
+            "description": "An elegant debug assistant for the Laravel framework.",
+            "keywords": [
+                "debugging",
+                "laravel",
+                "monitoring"
+            ],
+            "support": {
+                "issues": "https://github.com/laravel/telescope/issues",
+                "source": "https://github.com/laravel/telescope/tree/v5.2.2"
+            },
+            "time": "2024-08-26T12:40:52+00:00"
         },
         {
             "name": "laravel/tinker",

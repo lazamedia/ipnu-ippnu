@@ -198,3 +198,13 @@
   text-decoration: none;
   transform: translateY(-3px);
 }
+
+
+@media (max-width: 768px) {
+  body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+  }
+
+}

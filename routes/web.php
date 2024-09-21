@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ModulController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PostControler;
@@ -100,6 +101,9 @@ Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin']
     Route::resource('/dashboard/auth', UserController::class);
 
     route::resource('dashboard/artikel' , ArtikelController::class);
+
+    route::resource('dashboard/modul' , ModulController::class);
+    route::post('dashboard/modul/bulk-delete' , [ModulController::class, 'bulkDelete'])->name('modul.bulk-delete');
     
 });
 

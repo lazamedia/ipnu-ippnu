@@ -9,6 +9,11 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
     <meta name="referrer" content="no-referrer">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#000000">
+    <meta name="mobile-web-app-capable" content="yes">
+
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>PelajarNU{{ isset($title) ? ' - ' . htmlspecialchars($title, ENT_QUOTES, 'UTF-8') : '' }}</title>

@@ -6,6 +6,11 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#000000">
+  <meta name="mobile-web-app-capable" content="yes">
+
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>Dashboard</title>
   <!-- General CSS Files -->
@@ -39,7 +44,16 @@
 
   <link rel="stylesheet" type="text/css" href="https://unpkg.com/trix@2.0.8/dist/trix.css">
   <script type="text/javascript" src="https://unpkg.com/trix@2.0.8/dist/trix.umd.min.js"></script>
-
+  <style>
+    @media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+    
+}
+  </style>
 
 </head>
 

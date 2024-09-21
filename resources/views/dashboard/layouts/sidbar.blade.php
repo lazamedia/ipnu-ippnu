@@ -65,8 +65,8 @@
               </a>
           </li>
 
-          <li class="{{ Request::is('media/modul-materi') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('media/modul-materi') }}">
+          <li class="{{ Request::is('dashboard/modul') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('dashboard/modul') }}">
                   <i data-feather="book"></i>
                   <span>Modul Materi</span>
               </a>
