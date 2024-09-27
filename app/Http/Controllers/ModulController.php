@@ -20,7 +20,7 @@ class ModulController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.modul.create');
     }
 
     /**

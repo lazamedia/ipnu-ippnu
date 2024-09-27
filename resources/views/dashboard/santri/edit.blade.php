@@ -67,7 +67,7 @@
                     </div>
                     
                     <div class="tombol">
-                        <a href="/dashboard/santri"  class="btn btn-primary" style="text-decoration: none;">Back</a>
+                        <a href="/dashboard/santri"  class="btn btn-success" style="text-decoration: none;">Back</a>
                         <button class="btn btn-primary" type="submit">Update</button>
                     </div>
                 </form>

@@ -4,7 +4,7 @@
 
 <style>
     body {
-        background-color: #1a2c3a;
+        background-color: #081b29;
     }
     .card-blank{
         width: 100%;

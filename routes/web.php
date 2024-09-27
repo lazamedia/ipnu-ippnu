@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminCategoryController;
 use App\Http\Controllers\ApiPengurusController;
 use App\Http\Controllers\ArtikelController;
+use App\Http\Controllers\BackupController;
 use App\Http\Controllers\DashboardPostController;
 use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,8 @@ use App\Http\Controllers\ModulController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PostControler;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SaldoController;
 use App\Http\Controllers\SantriController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewAnggotaController;
@@ -104,7 +107,19 @@ Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin']
 
     route::resource('dashboard/modul' , ModulController::class);
     route::post('dashboard/modul/bulk-delete' , [ModulController::class, 'bulkDelete'])->name('modul.bulk-delete');
+
+    Route::get('dashboard/backup', [BackupController::class, 'index'])->name('backup.index');
+    Route::post('dashboard/backup/backup', [BackupController::class, 'backupDatabase'])->name('backup.database');
+    Route::post('dashboard/backup/restore', [BackupController::class, 'restoreDatabase'])->name('backup.restore');
+
+    Route::get('dashboard/profile', [ProfileController::class, 'index'])->name('profile.index');
+    Route::put('dashboard/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    route::resource('dashboard/saldo' , SaldoController::class);
+    Route::post('/dashboard/saldo/bulk-delete', [SaldoController::class, 'bulkDelete'])->name('saldo.bulk-delete');
     
+
+        
 });
 
 Route::get('/posts', [PostControler::class, 'index']);
@@ -135,3 +150,4 @@ Route::prefix('api')->group(function () {
 
 
 Route::get('anggota', [ViewAnggotaController::class, 'index']);
+

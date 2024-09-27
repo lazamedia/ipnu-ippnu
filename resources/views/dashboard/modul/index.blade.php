@@ -14,7 +14,7 @@
                 </div>
                 <div class="d-flex flex-wrap align-items-center justify-content-end">
                     <div class="btn-actions d-flex mr-3">
-                        <a href="" class="btn btn-primary mr-2">
+                        <a href="{{ route('modul.create') }}" class="btn btn-primary mr-2">
                             <i class="fas fa-plus"></i> Create
                         </a>
                         <button id="bulk-delete-btn" class="btn btn-danger mr-2" disabled>

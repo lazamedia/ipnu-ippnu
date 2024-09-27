@@ -14,8 +14,6 @@ h4{
     margin-bottom: -2px;
 }
 
-
-
 </style>
 
 {{-- SLIDER --}}
@@ -109,6 +107,135 @@ h4{
 </section>
 {{-- --- --}}
 
+
+
+{{-- BOX VIDIO PROFILE --}}
+<style>
+    .row{
+        display: flex;
+        width: 100%;
+        padding: 40px 100px;
+        border-top: 2px solid #317671;
+        border-bottom: 2px solid #317671;
+        position: flex-start;
+        margin-bottom: 60px;
+        background-color: #e4ebe9;
+    }
+
+    @media (max-width: 768px){
+        .row{
+            padding: 20px 10px;
+            text-align: center;
+            gap: 20px;
+        }
+    }
+
+    .p-box{
+        max-width: 500px;
+        margin: auto;
+    }
+    .box-kanan{
+        padding: 10px;
+        align-items: center;
+        align-content: center;
+        gap: 5px;
+    }
+
+    /* Style for the modal */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px;
+    }
+
+    .close {
+        position: absolute;
+        top: 55px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #ccc;
+        text-decoration: none;
+        cursor: pointer;
+    }
+</style>
+<section>
+    <div class="row">
+        <div class="p-box p-kiri">
+            <img src="https://img.youtube.com/vi/F6J4YX1jCBA/0.jpg" width="400" height="200" style="cursor:pointer;" id="videoThumbnail">
+            <p style="font-size: 9pt; color:#858585; margin-top:7px;">Klik untuk lihat vidio</p>
+        </div>
+        <div class="p-box p-kanan">
+            <h3>Kenali Organisasi Kami</h3>
+            <p>Melalui berbagai program, kami menghadirkan kesempatan untuk belajar, berkolaborasi, dan berkontribusi bagi masyarakat, menjadikan setiap individu bagian dari perubahan yang positif.</p>
+            <a href="" class="btn btn-success">Lets Go</a>
+        </div>
+    </div>
+</section>
+<!-- Modal Structure -->
+<div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <iframe id="youtubeVideo" width="100%" height="400" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the image that opens the modal
+    var img = document.getElementById("videoThumbnail");
+
+    // Get the <iframe> element where the video will be displayed
+    var iframe = document.getElementById("youtubeVideo");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the image, open the modal and start the video
+    img.onclick = function(){
+        modal.style.display = "block";
+        iframe.src = "https://www.youtube.com/embed/F6J4YX1jCBA?si=CvfjE1wF5d5kpkL6";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+        iframe.src = ""; // Stop the video when closing the modal
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            iframe.src = ""; // Stop the video when closing the modal
+        }
+    }
+</script>
+
+{{-- END BOX --}}
+
 <style>
 /* Style untuk container dan layout responsif */
 .container-event {
@@ -123,13 +250,14 @@ h4{
 .box-event {
     display: flex;
     flex-direction: column; /* Memastikan konten disusun secara vertikal */
-    flex-basis: calc(20% - 20px); /* 3 kolom dalam satu baris */
+    flex-basis: calc(23% - 20px); 
     background-color: #fff;
     border: 1px solid #e0e0e0;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
 }
 
 .box-event:hover {
@@ -202,6 +330,8 @@ h4{
 
 </style>
 
+
+
 <section>
     <div class="judul-event">
         <h3>Event Terbaru</h3>
@@ -209,12 +339,12 @@ h4{
     </div>
     <div class="container-event">
         <!-- Box Event 1 -->
-        <div class="box-event">
+        <a href="/" class="box-event">
             <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
                 <h4>Selapanan Rutinan IPNU PUJUT</h4>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
                 <div class="date">10 Januari 2024</div>
-        </div>
+        </a>
         <div class="box-event">
             <img src="img/s-1.jpg" loading="lazy" alt="Event 1">
                 <h4>Buka Bersama</h4>

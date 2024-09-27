@@ -72,7 +72,7 @@
                     </div>
 
                     <div class="tombol">
-                        <button class="btn btn-info mr-3" type="button">Back</button>
+                        <a href="{{ route('santri.index') }}" class="btn btn-success" >Back</a>
                         <button class="btn btn-primary" type="submit">Create</button>
                     </div>
                 </form>

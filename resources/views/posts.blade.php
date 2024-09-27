@@ -333,6 +333,11 @@
       justify-content: center;
       text-align: center; 
     }
+    .artikel-kanan{
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
 
     .box-judul {
       flex-basis: 100%; 

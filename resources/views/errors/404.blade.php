@@ -32,6 +32,7 @@
             margin-top: 50px;
             font-size: 11pt;
             color: #797979;
+            cursor: pointer;
         }
         .img-404{
             width: 200px;
@@ -41,10 +42,11 @@
 </head>
 <body>
     <div class="container">
-        <img src="img/404.png" lazy='loader' class="img-404" alt="">
+        <img src="{{ asset('img/404.png') }}" lazy='loader' class="img-404" alt="">
         <h1>404 - Page Not Found</h1>
         <p>Oops! The page you are looking for does not exist.</p>
-        <a href="{{ url('/') }}">Return to Homepage</a>
+        <!-- Gunakan history.back() untuk kembali ke halaman sebelumnya -->
+        <a onclick="history.back()">Kembali</a>
     </div>
 </body>
 </html>

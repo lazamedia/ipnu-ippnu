@@ -3,15 +3,11 @@
 @section('container')
 
 <style>
-    body{
-        background-color: #e0dcdc;
-    }
+
     .article-box {
         margin-top: 50px;
-        background-color: #ffffff;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
 
@@ -34,7 +30,7 @@
         background-color: #ffffff;
         border: 1px solid #0056b3;
         color: #046785;
-        padding: 6px 20px;
+        padding: 4px 15px;
         border-radius: 30px;
         transition: background-color 0.3s;
     }
@@ -43,7 +39,6 @@
         border: 1px solid #00a7b3;
         background-color: #ffffff;
         color: #00a7b3;
-        font-weight: 600;
     }
 
     .sidebar-box h5 {
@@ -68,6 +63,18 @@
         font-size: 15pt;
         color: #006d8b;
         margin-bottom: 15px;
+    }
+
+    .list-unstyled li {
+        border-left: 2px solid #007786;
+        padding: 5px;
+        margin: 5px;
+    }
+
+    .list-unstyled li:hover {
+        border-left: 2px solid #000000;
+        padding: 5px;
+        margin: 5px;
     }
 
     .latest-post {

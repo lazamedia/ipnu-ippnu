@@ -21,12 +21,14 @@
 
   .preview {
       margin-top: 15px;
-      position: relative;
+      position: center;
+      text-align: center;
   }
 
   .preview img {
       max-width: 100%;
       height: auto;
+      max-height: 300px;
       border-radius: 10px;
       cursor: pointer;
   }

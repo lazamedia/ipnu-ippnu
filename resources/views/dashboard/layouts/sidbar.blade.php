@@ -49,6 +49,13 @@
                     <span>Data Makesta</span>
                 </a>
             </li>
+
+            <li class="{{ Request::is('dashboard/saldo') ? 'active' : '' }}">
+                <a href="{{ url('dashboard/saldo') }}" class="nav-link">
+                    <i data-feather="archive"></i>
+                    <span>Keuangan</span>
+                </a>
+            </li>
         
           <li class="menu-header">Media</li>
           <li class="{{ Request::is('dashboard/posts') ? 'active' : '' }}">
@@ -87,22 +94,15 @@
               </a>
           </li>
 
-          <li class="{{ Request::is('dashboard/role-permission') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('dashboard/role-permission') }}">
+          <li class="{{ Request::is('dashboard/backup') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('dashboard/backup') }}">
                   <i data-feather="lock"></i>
-                  <span>Role Permission</span>
+                  <span>Backup Data</span>
               </a>
           </li>
 
-          <li class="{{ Request::is('dashboard/tambah-akun') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('dashboard/tambah-akun') }}">
-                  <i data-feather="user-plus"></i>
-                  <span>Tambah Akun</span>
-              </a>
-          </li>
-
-          <li class="{{ Request::is('dashboard/edit-profile') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ url('dashboard/edit-profile') }}">
+          <li class="{{ Request::is('dashboard/profile') ? 'active' : '' }}">
+              <a class="nav-link" href="{{ url('dashboard/profile') }}">
                   <i data-feather="user"></i>
                   <span>Edit Profile</span>
               </a>
