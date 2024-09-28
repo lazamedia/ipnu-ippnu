@@ -101,7 +101,7 @@ Route::middleware(['auth:sanctum', RoleMiddleware::class . ':admin,super_admin']
     Route::post('/dashboard/event/bulk-delete', [EventController::class, 'bulkDelete'])->name('dashboard.event.bulk-delete');
 
     Route::post('/dashboard/auth/bulk-delete', [UserController::class, 'bulkDelete'])->name('auth.bulk-delete');
-    Route::resource('/dashboard/auth', UserController::class);
+    Route::resource('dashboard/auth', UserController::class);
 
     route::resource('dashboard/artikel' , ArtikelController::class);
 

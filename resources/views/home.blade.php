@@ -183,7 +183,7 @@ h4{
 <section>
     <div class="row">
         <div class="p-box p-kiri">
-            <img src="https://img.youtube.com/vi/F6J4YX1jCBA/0.jpg" width="400" height="200" style="cursor:pointer;" id="videoThumbnail">
+            <img src="{{ asset('img/cover.jpg') }}" width="400" height="200" style="cursor:pointer;" id="videoThumbnail">
             <p style="font-size: 9pt; color:#858585; margin-top:7px;">Klik untuk lihat vidio</p>
         </div>
         <div class="p-box p-kanan">
@@ -216,7 +216,7 @@ h4{
     // When the user clicks on the image, open the modal and start the video
     img.onclick = function(){
         modal.style.display = "block";
-        iframe.src = "https://www.youtube.com/embed/F6J4YX1jCBA?si=CvfjE1wF5d5kpkL6";
+        iframe.src = "https://www.youtube.com/embed/Zxo9h5xLYiA?si=4UCtjoZCzWdqgQuI";
     }
 
     // When the user clicks on <span> (x), close the modal
