@@ -111,10 +111,10 @@
                     <button type="button" id="remove-file" class="remove-file-button">×</button>
                 </div>
             </div>  
-            <button type="submit" class="btn btn-success">Upload Database</button>
+            <button type="submit" class="btn btn-success mb-2">Upload Database</button>
         </form>
+        <p style="color: #8a000e">*Masih dalam proses perbaikan</p>
     </div>
-
 </div>
 
 <script>

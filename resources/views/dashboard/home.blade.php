@@ -11,6 +11,9 @@
     height: 500px;
     color: #000000;
     z-index: 1000;
+    text-align: center;
+    align-items: center;
+    align-content: center;
 }
 
 </style>
@@ -19,8 +22,8 @@
 <div class="row">
     <div class="box">
         <div class="box-header">
-            <h4>Test Box</h4>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo, corporis.</p>
+            <h4>Halaman ini masih dalam tahap pengembangan</h4>
+            <p>Silahkan cek menu dashboard lainnya :)</p>
         </div>
     </div>
 </div>

@@ -2,6 +2,8 @@
 
 @section('container')
 
+@include('popup')
+
 <link rel="stylesheet" href="css/home.css">
 <script src="js/home.js"></script>
     

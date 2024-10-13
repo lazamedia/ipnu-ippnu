@@ -5,20 +5,22 @@
 
  <!-- Box untuk menampilkan total pemasukan, pengeluaran, dan saldo akhir -->
 
-  <div class="alert alert-success text-center" style="font-size: 0.9rem;">
-      <div class="row">
-          <div class="col-md-4 col-12">
-              <strong>Total Pemasukan:</strong> Rp. {{ number_format($total_pemasukan, 2, ',', '.') }}
-          </div>
-          <div class="col-md-4 col-12">
-              <strong>Total Pengeluaran:</strong> Rp. {{ number_format($total_pengeluaran, 2, ',', '.') }}
-          </div>
-          <div class="col-md-4 col-12">
-              <strong>Saldo Akhir:</strong> Rp. {{ number_format($sisa_saldo, 2, ',', '.') }}
-          </div>
-      </div>
-  </div>
-
+<div class="card">
+    <div class="card-body" style="font-size: 0.9rem; color:black;">
+        <div class="row">
+            <div class="col-md-4 col-12">
+                <strong>Total Pemasukan:</strong> Rp. {{ number_format($total_pemasukan, 2, ',', '.') }}
+            </div>
+            <div class="col-md-4 col-12">
+                <strong>Total Pengeluaran:</strong> Rp. {{ number_format($total_pengeluaran, 2, ',', '.') }}
+            </div>
+            <div class="col-md-4 col-12">
+                <strong>Saldo Akhir:</strong> Rp. {{ number_format($sisa_saldo, 2, ',', '.') }}
+            </div>
+        </div>
+    </div>
+  
+</div>
 
 
 <div class="card pt-4">
