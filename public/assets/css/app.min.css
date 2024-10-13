@@ -7651,7 +7651,7 @@ button.bg-dark:hover {
     position: absolute !important;
 }
 .position-fixed {
-    position: fixed !important;
+    position: fixed ;
 }
 .position-sticky {
     position: -webkit-sticky !important;
